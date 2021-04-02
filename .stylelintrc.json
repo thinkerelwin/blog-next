@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-prettier"
+  ],
+  "ignoreFiles": ["styles/normalize.css"],
+  "rules": {
+    "color-named": null,
+    "max-nesting-depth": [
+      2,
+      { "ignore": ["blockless-at-rules", "pseudo-classes"] }
+    ],
+    "value-no-vendor-prefix": [
+      true,
+      {
+        "ignoreValues": ["box"]
+      }
+    ],
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["box-orient"]
+      }
+    ]
+  }
+}

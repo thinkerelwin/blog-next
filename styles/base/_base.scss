@@ -1,0 +1,85 @@
+@use 'mixins';
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%; // 1rem == 10px, 10px/16px = 62.5%
+
+  @include mixins.rwd(md) {
+    font-size: 56.25%; // 9/16 = 56.25%
+  }
+
+  @include mixins.rwd(sm) {
+    font-size: 50%; // 8/16 = 50%
+  }
+
+  // @include rwd(xs) {
+  //   font-size: 50%;
+  // }
+
+  @include mixins.rwd(xl) {
+    font-size: 75%; // 12/16 = 75%
+  }
+}
+
+body {
+  background-color: rgb(189, 203, 204);
+  box-sizing: border-box;
+  @include mixins.rwd(md) {
+    padding: 0;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
+}
+
+/* Removes discs from ul */
+ul {
+  list-style: none;
+}
+
+// Forms and buttons
+input,
+textarea,
+select,
+button {
+  border: 0 none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+button {
+  background-color: transparent;
+  border: 0 none;
+  outline: none;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  color: #777;
+  line-height: 1.8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  text-transform: capitalize;
+}

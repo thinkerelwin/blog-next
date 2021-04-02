@@ -1,0 +1,43 @@
+.paperclip {
+  fill: #aaa;
+  height: 10rem;
+  transform: rotate(-10deg);
+  width: 3rem;
+}
+
+.pencil-sharpener {
+  fill: rgba(0, 0, 48, 0.795);
+  transform: rotate(80deg);
+  width: auto;
+  .sharpener0 {
+    fill: #939393;
+  }
+  .sharpener1 {
+    fill: #565656;
+  }
+  .sharpener2 {
+    fill: #c1c1c1;
+  }
+  .sharpener3 {
+    fill: #fff;
+  }
+}
+
+.pencil {
+  fill: rgba(0, 0, 972.5, 0.556);
+  width: 90%;
+  .pencil0 {
+    fill: #d16221;
+  }
+  .pencil1 {
+    fill: #fff;
+    opacity: 0.2;
+  }
+  .pencil2 {
+    fill: #333;
+    opacity: 0.2;
+  }
+  .pencil3 {
+    fill: #f9f6e7;
+  }
+}
