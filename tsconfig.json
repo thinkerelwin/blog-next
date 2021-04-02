@@ -19,7 +19,7 @@
       "@/store/*": ["store/*"],
       "@/features/*": ["features/*"],
       "@/components/*": ["components/*"],
-      "@/utils/*": ["utils/*"],
+      "@/utils/*": ["utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js"],
