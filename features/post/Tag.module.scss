@@ -3,7 +3,7 @@
   content: "";
   position: absolute;
   top: 45%;
-  width: 20px;
+  width: 2.5rem;
 }
 
 .container {
@@ -27,7 +27,6 @@
   text-align: center;
   text-transform: uppercase;
   transform: rotate(-1deg);
-  // word-wrap: break-word;
   &::before {
     @include decoration-line();
 

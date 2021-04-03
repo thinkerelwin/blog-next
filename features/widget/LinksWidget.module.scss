@@ -1,29 +1,31 @@
+@use '@/styles/mixins';
+
 $container-margin: 1.25rem;
 
+.list {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.list-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  line-height: 3rem;
+  padding: 0.375rem 0;
+  text-transform: capitalize;
+  a {
+    font-size: 1.625rem;
+  }
+}
+
 .container {
+  @include mixins.fade-in;
+
   box-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
   left: 0;
   margin: $container-margin;
   max-height: calc(100vh - var(--tabber-height) - (#{$container-margin} * 2));
   overflow-y: scroll;
   padding: var(--widget-padding);
-  h2 {
-    font-size: 3rem;
-    font-weight: normal;
-    margin-bottom: 2.5rem;
-  }
-  ul {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  li {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    line-height: 3rem;
-    padding: 0.375rem 0;
-    text-transform: capitalize;
-    a {
-      font-size: 1.625rem;
-    }
-  }
+
   &.general {
     background-color: rgb(83, 115, 117);
     color: white;
@@ -31,9 +33,15 @@ $container-margin: 1.25rem;
   &.pink {
     background-color: #fbe0e0;
     color: #a86767;
-    ul,
-    li {
+    .list,
+    .list-item {
       border-color: #e0c8c8;
     }
   }
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: normal;
+  margin-bottom: 2.5rem;
 }

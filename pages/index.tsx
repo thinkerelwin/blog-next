@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <MainTitle />
+      <MainTitle hasPencil />
       <Posts />
       <MobileWidgets />
     </>

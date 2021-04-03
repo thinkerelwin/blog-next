@@ -9,7 +9,7 @@ export default function Posts() {
   return (
     <main className={styles.container}>
       <Tag />
-      <Article />
+      <Article image={"1"} isPreview />
     </main>
   );
 }

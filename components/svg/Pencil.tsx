@@ -1,9 +1,10 @@
 import React from "react";
+// import classnames from 'classnames'
 
-export default function Pencil() {
+export default function Pencil({ cn = "" }) {
   return (
     <svg
-      className="little-pencil"
+      className={`little-pencil ${cn}`}
       version="1.1"
       id="Layer_1"
       xmlns="http://www.w3.org/2000/svg"

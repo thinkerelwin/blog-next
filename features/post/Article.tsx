@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -8,7 +8,15 @@ import Clip from "@/components/svg/Clip";
 
 import styles from "./Article.module.scss";
 
-export default function Article({ image = "1" }) {
+export default function Article({
+  image = "1",
+  children,
+  isPreview
+}: {
+  image: string;
+  children?: ReactNode;
+  isPreview?: boolean;
+}) {
   const hasImage = image.length > 0;
   return (
     <article
@@ -25,8 +33,6 @@ export default function Article({ image = "1" }) {
               alt="front one"
               layout="fill"
               objectFit="contain"
-              // width={371}
-              // height={278}
             />
             {/* <img
               className={styles.image}
@@ -48,7 +54,11 @@ export default function Article({ image = "1" }) {
           Posted on <time className="t">February 1, 2016</time>
         </p>
       </header>
-      <p className={styles.content}>
+      <p
+        className={classnames(styles.content, {
+          [styles.preview]: isPreview
+        })}
+      >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, officia
         aperiam dicta blanditiis incidunt sint numquam quibusdam soluta
         temporibus laboriosam ad, ratione consectetur est voluptatem commodi
@@ -66,7 +76,10 @@ export default function Article({ image = "1" }) {
         corrupti nesciunt ut unde. Mollitia magni dolorem maxime ullam ipsa
         recusandae numquam a ad quam eligendi, illum beatae consequatur quaerat.
       </p>
-      <p className={`${styles.continue} cute-font`}>Continue reading</p>
+      {isPreview && (
+        <p className={`${styles.continue} cute-font`}>Continue reading</p>
+      )}
+      {children}
     </article>
   );
 }

@@ -63,15 +63,17 @@
 }
 
 .content {
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
   font-size: 1.875rem;
-  -webkit-line-clamp: 8;
   line-height: 3.5rem;
   margin-top: 2.75rem;
-  overflow: hidden;
-  padding: 0 30px;
+  padding: 0 3.75rem;
   text-overflow: ellipsis;
+  &.preview {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    overflow: hidden;
+  }
 }
 
 .continue {

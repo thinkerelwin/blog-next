@@ -177,34 +177,37 @@ export default function MobileWidgets() {
   }, [hasActiveTab]);
 
   return (
-    <div
-      className={classnames(styles.container, {
-        [styles.active]: hasActiveTab
-      })}
-    >
-      {nameOfActiveWidget === WIDGETS[0].name && (
-        <LinksWidget
-          title="recent posts"
-          links={linksForPosts}
-          theme={WidgetThemes.Alert}
-        />
-      )}
-      {nameOfActiveWidget === WIDGETS[1].name && (
-        <LinksWidget
-          title="archives"
-          links={linksForMonth}
-          theme={WidgetThemes.Default}
-        />
-      )}
-      {nameOfActiveWidget === WIDGETS[2].name && <SearchBar />}
-      {nameOfActiveWidget === WIDGETS[3].name && (
-        <LinksWidget
-          title="tags"
-          links={linksForTags}
-          theme={WidgetThemes.Default}
-        />
-      )}
+    <>
+      <div
+        className={classnames(styles.container, {
+          [styles.active]: hasActiveTab
+        })}
+      >
+        {/* TODO can be grouped with a switch or */}
+        {nameOfActiveWidget === WIDGETS[0].name && (
+          <LinksWidget
+            title="recent posts"
+            links={linksForPosts}
+            theme={WidgetThemes.Alert}
+          />
+        )}
+        {nameOfActiveWidget === WIDGETS[1].name && (
+          <LinksWidget
+            title="archives"
+            links={linksForMonth}
+            theme={WidgetThemes.Default}
+          />
+        )}
+        {nameOfActiveWidget === WIDGETS[2].name && <SearchBar />}
+        {nameOfActiveWidget === WIDGETS[3].name && (
+          <LinksWidget
+            title="tags"
+            links={linksForTags}
+            theme={WidgetThemes.Default}
+          />
+        )}
+      </div>
       <Tabber nameOfActiveWidget={nameOfActiveWidget} changeTab={changeTab} />
-    </div>
+    </>
   );
 }
