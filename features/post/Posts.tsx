@@ -1,13 +1,15 @@
 import React from "react";
 
-import TextOnly from "./TextOnly";
+import Article from "./Article";
+import Tag from "./Tag";
 
 import styles from "./Posts.module.scss";
 
 export default function Posts() {
   return (
-    <div className={styles.container}>
-      <TextOnly />
-    </div>
+    <main className={styles.container}>
+      <Tag />
+      <Article />
+    </main>
   );
 }

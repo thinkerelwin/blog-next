@@ -23,21 +23,31 @@
   }
 }
 
-.pencil {
-  fill: rgba(0, 0, 972.5, 0.556);
-  width: 90%;
-  .pencil0 {
-    fill: #d16221;
+.little-pencil {
+  height: 4.5rem;
+  max-width: 70%;
+  width: 52rem;
+  .pencil-little0 {
+    fill: #edcfcf;
   }
-  .pencil1 {
+  .pencil-little1 {
+    fill: #eaeaea;
+  }
+  .pencil-little2 {
+    fill: #ddb612;
+  }
+  .pencil-little3 {
     fill: #fff;
+    opacity: 0.5;
+  }
+  .pencil-little4 {
+    fill: #5b5950;
     opacity: 0.2;
   }
-  .pencil2 {
-    fill: #333;
-    opacity: 0.2;
-  }
-  .pencil3 {
+  .pencil-little5 {
     fill: #f9f6e7;
+  }
+  .pencil-little6 {
+    fill: #4f4f4f;
   }
 }

@@ -8,7 +8,7 @@ import "@/styles/variables.css";
 import "@/styles/main.scss";
 
 export function reportWebVitals(metric: object) {
-  console.log(metric);
+  // console.log(metric);
 }
 
 function MyApp({ Component, pageProps }: AppProps) {

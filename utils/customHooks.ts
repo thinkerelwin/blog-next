@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function useMediaQuery(query: string) {
   const [doesMatch, onSetDoesMatch] = useState(false);
@@ -20,4 +20,14 @@ export function useMediaQuery(query: string) {
   }, [query, onSetDoesMatch]);
 
   return doesMatch;
+}
+
+export function usePrevious(value: number, initialValue: number = 0) {
+  const ref = useRef(initialValue);
+
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+
+  return ref.current;
 }

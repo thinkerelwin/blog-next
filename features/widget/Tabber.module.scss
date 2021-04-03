@@ -6,7 +6,12 @@
   height: 5rem;
   justify-content: space-around;
   position: fixed;
+  transition: all 0.3s;
   width: 100%;
+  z-index: 2;
+  &.conceal {
+    transform: translateY(100%);
+  }
   img {
     opacity: 0.53;
     padding: 0.5rem;

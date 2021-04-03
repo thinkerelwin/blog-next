@@ -1,11 +1,42 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-import styles from "./TextOnly.module.scss";
+import classnames from "classnames";
 
-export default function TextOnly() {
+import Clip from "@/components/svg/Clip";
+
+import styles from "./Article.module.scss";
+
+export default function Article({ image = "1" }) {
+  const hasImage = image.length > 0;
   return (
-    <article className={styles.container}>
+    <article
+      className={classnames(styles.container, {
+        [styles["with-image"]]: hasImage
+      })}
+    >
+      {hasImage && (
+        <Link href="/">
+          <a className={styles["image-link"]}>
+            <Image
+              className={styles.image}
+              src="https://source.unsplash.com/_xmAPHUXXiU/1920x1279"
+              alt="front one"
+              layout="fill"
+              objectFit="contain"
+              // width={371}
+              // height={278}
+            />
+            {/* <img
+              className={styles.image}
+              src="https://via.placeholder.com/371x278"
+              alt="front one"
+            /> */}
+            <Clip />
+          </a>
+        </Link>
+      )}
       <header className={styles.header}>
         <div className={styles.tags}>
           <Link href="/">
