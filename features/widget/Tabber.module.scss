@@ -3,7 +3,7 @@
   background-color: white;
   bottom: 0;
   display: flex;
-  height: 5rem;
+  height: var(--tabber-height);
   justify-content: space-around;
   position: fixed;
   transition: all 0.3s;
@@ -12,8 +12,12 @@
   &.conceal {
     transform: translateY(100%);
   }
-  img {
-    opacity: 0.53;
-    padding: 0.5rem;
+}
+
+.image {
+  opacity: 0.53;
+  padding: 0.5rem;
+  &.active {
+    opacity: 1;
   }
 }

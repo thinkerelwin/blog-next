@@ -2,9 +2,6 @@ import React, { useEffect, useRef } from "react";
 import classnames from "classnames";
 import throttle from "lodash/throttle";
 
-import { useAppDispatch } from "@/store/index";
-import { setActiveWidget } from "./widgetSlice";
-
 import styles from "./Tabber.module.scss";
 
 export const WIDGETS = [
@@ -26,9 +23,13 @@ export const WIDGETS = [
   }
 ];
 
-export default function Tabber() {
-  const dispatch = useAppDispatch();
-
+export default function Tabber({
+  nameOfActiveWidget,
+  changeTab
+}: {
+  nameOfActiveWidget: string;
+  changeTab: Function;
+}) {
   const prevOffsetRef = useRef(0);
 
   useEffect(() => {
@@ -64,8 +65,14 @@ export default function Tabber() {
   return (
     <section id="tabber" className={classnames(styles.container)}>
       {WIDGETS.map(({ name, imgPath }) => (
-        <button key={name} onClick={() => dispatch(setActiveWidget(name))}>
-          <img src={imgPath} alt={name} />
+        <button key={name} onClick={() => changeTab(name)}>
+          <img
+            className={classnames(styles.image, {
+              [styles.active]: nameOfActiveWidget === name
+            })}
+            src={imgPath}
+            alt={name}
+          />
         </button>
       ))}
     </section>

@@ -1,6 +1,11 @@
+$container-margin: 1.25rem;
+
 .container {
   box-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
-  margin: 1.25rem;
+  left: 0;
+  margin: $container-margin;
+  max-height: calc(100vh - var(--tabber-height) - (#{$container-margin} * 2));
+  overflow-y: scroll;
   padding: var(--widget-padding);
   h2 {
     font-size: 3rem;
@@ -20,7 +25,7 @@
     }
   }
   &.general {
-    background-color: rgba(83, 115, 117, 0.8);
+    background-color: rgb(83, 115, 117);
     color: white;
   }
   &.pink {

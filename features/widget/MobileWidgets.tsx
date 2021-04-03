@@ -1,11 +1,16 @@
-import { useSelector } from "react-redux";
+import { useEffect, useMemo } from "react";
+import classnames from "classnames";
 
 import SearchBar from "@/features/widget/SearchBar";
 import LinksWidget from "@/features/widget/LinksWidget";
 import Tabber from "@/features/widget/Tabber";
-import { RootState } from "@/store/rootReducer";
+
+import { useAppDispatch, useAppSelector } from "@/store/index";
+import { setActiveWidget } from "./widgetSlice";
 
 import { WIDGETS } from "@/features/widget/Tabber";
+
+import styles from "./MobileWidgets.module.scss";
 
 enum WidgetThemes {
   Default = "general",
@@ -111,6 +116,26 @@ const linksForPosts = [
   {
     name: "exampleL",
     path: "/"
+  },
+  {
+    name: "exampleM",
+    path: "/"
+  },
+  {
+    name: "exampleN",
+    path: "/"
+  },
+  {
+    name: "exampleO",
+    path: "/"
+  },
+  {
+    name: "exampleP",
+    path: "/"
+  },
+  {
+    name: "exampleO",
+    path: "/"
   }
 ];
 
@@ -130,12 +155,33 @@ const linksForTags = [
 ];
 
 export default function MobileWidgets() {
-  const nameOfActiveWidget = useSelector(
-    (state: RootState) => state.widget.nameOfActiveWidget
+  const dispatch = useAppDispatch();
+  const nameOfActiveWidget = useAppSelector(
+    (state) => state.widget.nameOfActiveWidget
   );
 
+  const hasActiveTab = useMemo(() => nameOfActiveWidget.length > 0, [
+    nameOfActiveWidget
+  ]);
+
+  function changeTab(name: string) {
+    const isSameTab = nameOfActiveWidget === name;
+    const targetName = isSameTab ? "" : name;
+    dispatch(setActiveWidget(targetName));
+  }
+
+  useEffect(() => {
+    document.querySelector("body")!.style.overflow = hasActiveTab
+      ? "hidden"
+      : "initial";
+  }, [hasActiveTab]);
+
   return (
-    <>
+    <div
+      className={classnames(styles.container, {
+        [styles.active]: hasActiveTab
+      })}
+    >
       {nameOfActiveWidget === WIDGETS[0].name && (
         <LinksWidget
           title="recent posts"
@@ -158,7 +204,7 @@ export default function MobileWidgets() {
           theme={WidgetThemes.Default}
         />
       )}
-      <Tabber />
-    </>
+      <Tabber nameOfActiveWidget={nameOfActiveWidget} changeTab={changeTab} />
+    </div>
   );
 }
