@@ -1,0 +1,22 @@
+.container {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.icons {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.link {
+  margin: 10px;
+}
+
+.icon {
+  path {
+    fill: #5e8284;
+    opacity: 0.7;
+  }
+}
