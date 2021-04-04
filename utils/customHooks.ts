@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 
 export function useMediaQuery(query: string) {
   const [doesMatch, onSetDoesMatch] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const onUpdateMatch = ({ matches }: { matches: boolean }) => {
       onSetDoesMatch(matches);
     };

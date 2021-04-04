@@ -1,0 +1,12 @@
+@use '@/styles/mixins';
+
+.widgets {
+  display: none;
+  flex-grow: 1;
+  width: 33.3%;
+  @include mixins.rwd(md) {
+    display: initial;
+    padding-right: var(--main-container-padding);
+    padding-top: 3rem;
+  }
+}

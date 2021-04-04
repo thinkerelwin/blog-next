@@ -12,12 +12,12 @@ import { WIDGETS } from "@/features/widget/Tabber";
 
 import styles from "./MobileWidgets.module.scss";
 
-enum WidgetThemes {
+export enum WidgetThemes {
   Default = "general",
   Alert = "pink"
 }
 
-const linksForMonth = [
+export const linksForMonth = [
   {
     name: "April 2021",
     path: "/"
@@ -68,7 +68,7 @@ const linksForMonth = [
   }
 ];
 
-const linksForPosts = [
+export const linksForPosts = [
   {
     name: "exampleA",
     path: "/"
@@ -134,12 +134,12 @@ const linksForPosts = [
     path: "/"
   },
   {
-    name: "exampleO",
+    name: "exampleQ",
     path: "/"
   }
 ];
 
-const linksForTags = [
+export const linksForTags = [
   {
     name: "tag1",
     path: "/"

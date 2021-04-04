@@ -32,7 +32,7 @@ export default function Article({
               src="https://source.unsplash.com/_xmAPHUXXiU/1920x1279"
               alt="front one"
               layout="fill"
-              objectFit="contain"
+              objectFit="fill"
             />
             {/* <img
               className={styles.image}

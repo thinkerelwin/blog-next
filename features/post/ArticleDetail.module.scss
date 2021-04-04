@@ -1,23 +1,27 @@
+@use '@/styles/mixins';
+@use '@/features/post/Posts.module.scss';
+
+.outer-container {
+  // display: flex;
+  @include Posts.container;
+}
+
 .container {
-  padding: 0 1.25rem;
-}
-
-.footer {
-  padding-top: 3.75rem;
-}
-
-.tag-header {
-  color: #d16221;
-  display: inline;
-  font-size: 1.5rem;
-  letter-spacing: 0.0125em;
-  margin-right: 0.5rem;
-  text-transform: uppercase;
+  @include Posts.articles;
 }
 
 .tag {
-  color: #a9babc;
   font-size: 2rem;
+
+  @include mixins.rwd(sm) {
+    font-size: 1.6rem;
+  }
+  @include mixins.rwd(md) {
+    font-size: 1.33rem;
+  }
+  @include mixins.rwd(md) {
+    font-size: 1.1rem;
+  }
   &:not(:last-child) {
     margin-right: 0.5rem;
     &::after {
@@ -26,12 +30,55 @@
   }
 }
 
+.footer {
+  padding-top: 3.75rem;
+
+  @include mixins.rwd(sm) {
+    align-self: flex-start;
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+  .tag {
+    color: #a9babc;
+  }
+}
+
+.tag-header {
+  color: #d16221;
+  display: inline;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin-right: 0.5rem;
+  text-transform: uppercase;
+  @include mixins.rwd(sm) {
+    font-size: 1.3rem;
+  }
+  @include mixins.rwd(md) {
+    font-size: 1.1rem;
+  }
+  @include mixins.rwd(md) {
+    font-size: 0.9rem;
+  }
+}
+
 .related {
+  margin: auto;
   text-align: center;
   width: 100%;
+  @include mixins.rwd(sm) {
+    width: 60%;
+  }
   &:not(:first-child) {
     margin-bottom: 3.75rem;
     margin-top: 3.75rem;
+    @include mixins.rwd(md) {
+      margin-bottom: 2.5rem;
+      margin-top: 2.5rem;
+    }
+    @include mixins.rwd(l) {
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
   }
   a {
     color: #537375;
@@ -43,12 +90,33 @@
   font-size: inherit;
   font-weight: 400;
   opacity: 0.7;
+  @include mixins.rwd(sm) {
+    font-size: 1.8rem;
+  }
+  @include mixins.rwd(md) {
+    font-size: 1.5rem;
+  }
+  @include mixins.rwd(l) {
+    font-size: 1.3rem;
+  }
 }
 
 .related-title {
   font-weight: bold;
+  @include mixins.rwd(sm) {
+    font-size: 1.8rem;
+  }
+  @include mixins.rwd(md) {
+    font-size: 1.5rem;
+  }
+  @include mixins.rwd(l) {
+    font-size: 1.3rem;
+  }
 }
 
 .pencil {
   margin-bottom: 3.75rem;
+  @include mixins.rwd(sm) {
+    max-width: 360px;
+  }
 }

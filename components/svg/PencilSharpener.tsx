@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function PencilSharpener() {
+export default function PencilSharpener({ cn = "" }) {
   return (
     <svg
-      className="pencil-sharpener"
+      className={`pencil-sharpener ${cn}`}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"

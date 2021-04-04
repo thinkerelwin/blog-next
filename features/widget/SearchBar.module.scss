@@ -12,17 +12,20 @@
   background-size: 30px 30px;
   margin: 1.25rem;
   padding: var(--widget-padding);
-  // width: 100%;
-  // @include mixins.rwd(xs) {
-  //   padding: 20px;
-  // }
+  @include mixins.rwd(md) {
+    animation: none;
+    margin-top: 0;
+  }
 }
 
 .form {
   background-color: white;
   border: 1px solid #ccc;
-  border-radius: 0.5rem;
+  border-radius: 3px;
   display: flex;
+  @include mixins.rwd(l) {
+    font-size: 1.3rem;
+  }
   &:focus-within {
     border-color: #2c48b3;
   }
@@ -49,21 +52,31 @@
   display: flex;
   flex-grow: 1;
   font-size: 2.25rem;
-  height: 5rem;
+  height: 40px;
   outline: none;
-  padding: 0.5rem 1rem;
+  padding: 3px 8px;
   text-transform: capitalize;
+  width: 100%;
+  @include mixins.rwd(md) {
+    font-size: 1.5rem;
+  }
+  @include mixins.rwd(l) {
+    font-size: 1.3rem;
+  }
   &::placeholder {
     font-style: italic;
   }
 }
 
 .submit {
-  width: 5rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 40px;
 }
 
 .search {
-  height: 3rem;
+  height: 24px;
   opacity: 0.5;
-  width: 3rem;
+  width: 24px;
 }

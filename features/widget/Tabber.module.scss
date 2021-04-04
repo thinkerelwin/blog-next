@@ -1,3 +1,5 @@
+@use '@/styles/mixins';
+
 .container {
   align-items: center;
   background-color: white;
@@ -9,6 +11,9 @@
   transition: all 0.3s;
   width: 100%;
   z-index: 2;
+  @include mixins.rwd(md) {
+    display: none;
+  }
   &.conceal {
     transform: translateY(100%);
   }

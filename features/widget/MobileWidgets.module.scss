@@ -1,3 +1,5 @@
+@use '@/styles/mixins';
+
 .container {
   height: 100vh;
   left: 0;
@@ -7,6 +9,9 @@
   transition: all 0.3s;
   visibility: hidden;
   width: 100vw;
+  @include mixins.rwd(md) {
+    display: none;
+  }
   &.active {
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 1;

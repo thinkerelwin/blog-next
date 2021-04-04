@@ -1,8 +1,14 @@
+@use '@/styles/mixins';
+
 .paperclip {
   fill: #aaa;
-  height: 10rem;
+  height: 80px;
   transform: rotate(-10deg);
-  width: 3rem;
+  width: 24px;
+  @include mixins.rwd(md) {
+    height: 110px;
+    width: 29px;
+  }
 }
 
 .pencil-sharpener {
@@ -29,6 +35,10 @@
   margin: 0 auto;
   max-width: 70%;
   width: 52rem;
+  // @include mixins.rwd(md) {
+  //   height: 3.6rem;
+  //   width: 4.16rem;
+  // }
   .pencil-little0 {
     fill: #edcfcf;
   }

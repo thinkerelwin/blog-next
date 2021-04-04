@@ -8,11 +8,16 @@ $container-margin: 1.25rem;
 
 .list-item {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  line-height: 3rem;
   padding: 0.375rem 0;
   text-transform: capitalize;
   a {
     font-size: 1.625rem;
+    @include mixins.rwd(md) {
+      font-size: 1.33rem;
+    }
+    @include mixins.rwd(l) {
+      font-size: 1.15rem;
+    }
   }
 }
 
@@ -25,10 +30,21 @@ $container-margin: 1.25rem;
   max-height: calc(100vh - var(--tabber-height) - (#{$container-margin} * 2));
   overflow-y: scroll;
   padding: var(--widget-padding);
+  @include mixins.rwd(md) {
+    $container-margin: 2rem;
+
+    animation: none;
+    margin-bottom: $container-margin;
+    margin-top: $container-margin;
+    max-height: calc(100vh - var(--tabber-height) - (#{$container-margin} * 2));
+  }
 
   &.general {
     background-color: rgb(83, 115, 117);
     color: white;
+    @include mixins.rwd(md) {
+      background-color: rgba(83, 115, 117, 0.8);
+    }
   }
   &.pink {
     background-color: #fbe0e0;
@@ -44,4 +60,11 @@ $container-margin: 1.25rem;
   font-size: 3rem;
   font-weight: normal;
   margin-bottom: 2.5rem;
+  @include mixins.rwd(md) {
+    font-size: 2rem;
+    margin-bottom: 1.75rem;
+  }
+  @include mixins.rwd(l) {
+    font-size: 1.8rem;
+  }
 }
