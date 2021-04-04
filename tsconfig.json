@@ -22,6 +22,12 @@
       "@/utils/*": ["utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js", "components/svg/IcoMoon.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.config.js",
+    "components/svg/IcoMoon.js"
+  ],
   "exclude": ["node_modules"]
 }

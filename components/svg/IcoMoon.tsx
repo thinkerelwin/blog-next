@@ -2,7 +2,12 @@ import React from "react";
 
 import iconPaths from "./selection.json"; // the file exported from IcoMoon
 
-function getPath(name) {
+interface IcoMoonType {
+  iconName: string;
+  cn: string;
+}
+
+function getPath(name: string) {
   const icon = iconPaths.icons.find(
     ({ properties }) => properties.name === name
   );
@@ -15,7 +20,7 @@ function getPath(name) {
   }
 }
 
-export default function IcoMoon({ iconName, cn = "" }) {
+export default function IcoMoon({ iconName, cn = "" }: IcoMoonType) {
   return (
     <svg className={cn} width="22" height="22" viewBox="0 0 1024 1024">
       <path d={getPath(iconName)}></path>

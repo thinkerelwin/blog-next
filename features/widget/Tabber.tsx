@@ -2,24 +2,26 @@ import React, { useEffect, useRef } from "react";
 import classnames from "classnames";
 import throttle from "lodash/throttle";
 
+import IcoMoon from "@/components/svg/IcoMoon";
+
 import styles from "./Tabber.module.scss";
 
 export const WIDGETS = [
   {
     name: "recent posts",
-    imgPath: "/clock.svg"
+    imgName: "clock"
   },
   {
     name: "archive",
-    imgPath: "/drawer.svg"
+    imgName: "drawer"
   },
   {
     name: "search",
-    imgPath: "/search.svg"
+    imgName: "search"
   },
   {
     name: "tags",
-    imgPath: "/price-tags.svg"
+    imgName: "price-tags"
   }
 ];
 
@@ -64,14 +66,13 @@ export default function Tabber({
 
   return (
     <section id="tabber" className={classnames(styles.container)}>
-      {WIDGETS.map(({ name, imgPath }) => (
+      {WIDGETS.map(({ name, imgName }) => (
         <button key={name} onClick={() => changeTab(name)}>
-          <img
-            className={classnames(styles.image, {
+          <IcoMoon
+            cn={classnames(styles.image, {
               [styles.active]: nameOfActiveWidget === name
             })}
-            src={imgPath}
-            alt={name}
+            iconName={imgName}
           />
         </button>
       ))}

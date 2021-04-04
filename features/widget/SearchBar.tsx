@@ -1,5 +1,7 @@
 import React from "react";
 
+import IconMoon from "@/components/svg/IcoMoon";
+
 import styles from "./SearchBar.module.scss";
 
 const Header = () => {
@@ -15,7 +17,7 @@ const Header = () => {
           />
         </label>
         <button className={styles.submit} type="submit">
-          <img className={styles.search} src="/search.svg" alt="search" />
+          <IconMoon cn={styles.search} iconName={"search"} />
         </button>
       </form>
     </section>
