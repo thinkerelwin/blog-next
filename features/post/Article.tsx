@@ -1,23 +1,63 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
+import dayjs from "dayjs";
 import classnames from "classnames";
 
+import { useSanitizer } from "@/utils/customHooks";
 import Clip from "@/components/svg/Clip";
-
 import styles from "./Article.module.scss";
+// import DOMPurify from "dompurify";
+
+interface CoverImageType {
+  alternativeText: string;
+  caption: string;
+  createdAt: string;
+  ext: string;
+  formats: Object; // helpful it if using srcset attribute
+  hash: string;
+  height: number;
+  id: string;
+  mime: string;
+  name: string;
+  provider: string;
+  related: string[];
+  size: number;
+  updatedAt: string;
+  url: string;
+  width: number;
+}
+
+export interface PostType {
+  content: string;
+  cover_image: CoverImageType;
+  createdAt: string;
+  id: string;
+  published_at: string;
+  slug: string;
+  tags: { tag: string }[];
+  title: string;
+  updatedAt: string;
+}
+
+export interface OriginalPostType extends PostType {
+  user: Object;
+}
 
 export default function Article({
-  image = "1",
+  post,
   children,
   isPreview
 }: {
-  image: string;
+  post: PostType;
   children?: ReactNode;
   isPreview?: boolean;
 }) {
-  const hasImage = image.length > 0;
+  const hasImage = post.cover_image?.url.length > 0;
+  const snitizedContent = useSanitizer(post.content);
+
+  if (!snitizedContent) return null;
+
   return (
     <article
       className={classnames(styles.container, {
@@ -29,55 +69,44 @@ export default function Article({
           <a className={styles["image-link"]}>
             <Image
               className={styles.image}
-              src="https://source.unsplash.com/_xmAPHUXXiU/1920x1279"
-              alt="front one"
+              // src="https://source.unsplash.com/_xmAPHUXXiU/1920x1279"
+              src={`http:localhost:1337${post.cover_image.url}`}
+              alt="front cover"
               layout="fill"
               objectFit="fill"
             />
-            {/* <img
-              className={styles.image}
-              src="https://via.placeholder.com/371x278"
-              alt="front one"
-            /> */}
             <Clip />
           </a>
         </Link>
       )}
       <header className={styles.header}>
         <div className={styles.tags}>
-          <Link href="/">
-            <a className={styles.tag}>tag</a>
-          </Link>
+          {post.tags.map(({ tag }) => (
+            <Link key={tag} href={`/tags/${tag}`}>
+              <a className={styles.tag}>{tag}</a>
+            </Link>
+          ))}
         </div>
-        <h2 className={styles.title}>title</h2>
+        <h2 className={styles.title}>{post.title}</h2>
         <p className={`${styles.time} cute-font`}>
-          Posted on <time className="t">February 1, 2016</time>
+          Posted on{" "}
+          <time className="t">
+            {dayjs(post.updatedAt).format("MMMM D, YYYY")}
+          </time>
         </p>
       </header>
-      <p
-        className={classnames(styles.content, {
-          [styles.preview]: isPreview
-        })}
-      >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, officia
-        aperiam dicta blanditiis incidunt sint numquam quibusdam soluta
-        temporibus laboriosam ad, ratione consectetur est voluptatem commodi
-        laudantium, ex non ea? Alias sint accusantium, est reprehenderit,
-        officiis fuga quae ullam in facilis earum delectus dignissimos rem quis
-        mollitia beatae nisi ea asperiores iusto at perferendis? Architecto
-        quisquam dolorum provident nobis magni. Unde delectus pariatur quis
-        harum porro mollitia. Neque id dolorem dignissimos eveniet placeat
-        voluptatibus corporis, architecto commodi numquam facilis hic unde odio
-        fuga, eos beatae earum magnam incidunt libero dolorum. Tempora nulla
-        aliquid doloribus libero harum inventore debitis autem ab sequi earum
-        reprehenderit pariatur, velit quod odit, praesentium quam adipisci culpa
-        amet doloremque iure cumque sunt consequuntur? Laboriosam, dolores ex.
-        Deleniti maxime, eaque repudiandae fuga, quam, eum aperiam sint eveniet
-        corrupti nesciunt ut unde. Mollitia magni dolorem maxime ullam ipsa
-        recusandae numquam a ad quam eligendi, illum beatae consequatur quaerat.
-      </p>
+      {
+        <div
+          className={classnames(styles.content, {
+            [styles.preview]: isPreview
+          })}
+          dangerouslySetInnerHTML={{ __html: snitizedContent }}
+        ></div>
+      }
       {isPreview && (
-        <p className={`${styles.continue} cute-font`}>Continue reading</p>
+        <Link href={`/posts/${post.slug}`}>
+          <a className={`${styles.continue} cute-font`}>Continue reading</a>
+        </Link>
       )}
       {children}
     </article>

@@ -1,5 +1,3 @@
-import React from "react";
-
 import SearchBar from "@/features/widget/SearchBar";
 import LinksWidget from "@/features/widget/LinksWidget";
 import {

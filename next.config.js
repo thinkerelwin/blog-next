@@ -10,7 +10,7 @@ module.exports = withBundleAnalyzer({
     includePaths: [path.join(__dirname, "styles")]
   },
   images: {
-    domains: ["source.unsplash.com"]
+    domains: ["source.unsplash.com", "localhost"]
   },
   env: {
     // customKey: 'my-value',
