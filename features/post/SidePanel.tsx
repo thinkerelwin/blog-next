@@ -3,18 +3,21 @@ import LinksWidget from "@/features/widget/LinksWidget";
 import { WidgetThemes } from "@/features/widget/MobileWidgets";
 
 import { linksForWidgetsType } from "@/features/widget/MobileWidgets";
+import { allPostTitlesType } from "@/features/widget/SearchBar";
 
 import styles from "./SidePanel.module.scss";
 
 export default function SidePanel({
-  linksForWidgets
+  linksForWidgets,
+  allPosts
 }: {
   linksForWidgets: linksForWidgetsType;
+  allPosts: allPostTitlesType[];
 }) {
   return (
     <>
       <aside className={styles.widgets}>
-        <SearchBar />
+        <SearchBar allPosts={allPosts} />
         <LinksWidget
           title="archives"
           links={linksForWidgets.linksForArchives}

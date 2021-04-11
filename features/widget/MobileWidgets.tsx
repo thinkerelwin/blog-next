@@ -12,6 +12,8 @@ import { WIDGETS } from "@/features/widget/Tabber";
 import { LinkType } from "@/features/widget/LinksWidget";
 import { PostType } from "@/features/post/Article";
 
+import { allPostTitlesType } from "@/features/widget/SearchBar";
+
 import styles from "./MobileWidgets.module.scss";
 
 export enum WidgetThemes {
@@ -26,147 +28,12 @@ export interface linksForWidgetsType {
   recentPosts: PostType[];
 }
 
-// export const linksForMonth = [
-//   {
-//     name: "April 2021",
-//     path: "/"
-//   },
-//   {
-//     name: "March 2021",
-//     path: "/"
-//   },
-//   {
-//     name: "February 2021",
-//     path: "/"
-//   },
-//   {
-//     name: "January 2021",
-//     path: "/"
-//   },
-//   {
-//     name: "December 2020",
-//     path: "/"
-//   },
-//   {
-//     name: "November 2020",
-//     path: "/"
-//   },
-//   {
-//     name: "October 2020",
-//     path: "/"
-//   },
-//   {
-//     name: "September 2020",
-//     path: "/"
-//   },
-//   {
-//     name: "August 2020",
-//     path: "/"
-//   },
-//   {
-//     name: "July 2020",
-//     path: "/"
-//   },
-//   {
-//     name: "June 2020",
-//     path: "/"
-//   },
-//   {
-//     name: "May 2020",
-//     path: "/"
-//   }
-// ];
-
-export const linksForPosts = [
-  {
-    name: "exampleA",
-    path: "/"
-  },
-  {
-    name: "exampleB",
-    path: "/"
-  },
-  {
-    name: "exampleC",
-    path: "/"
-  },
-  {
-    name: "exampleD",
-    path: "/"
-  },
-  {
-    name: "exampleE",
-    path: "/"
-  },
-  {
-    name: "exampleF",
-    path: "/"
-  },
-  {
-    name: "exampleG",
-    path: "/"
-  },
-  {
-    name: "exampleH",
-    path: "/"
-  },
-  {
-    name: "exampleI",
-    path: "/"
-  },
-  {
-    name: "exampleJ",
-    path: "/"
-  },
-  {
-    name: "exampleK",
-    path: "/"
-  },
-  {
-    name: "exampleL",
-    path: "/"
-  },
-  {
-    name: "exampleM",
-    path: "/"
-  },
-  {
-    name: "exampleN",
-    path: "/"
-  },
-  {
-    name: "exampleO",
-    path: "/"
-  },
-  {
-    name: "exampleP",
-    path: "/"
-  },
-  {
-    name: "exampleQ",
-    path: "/"
-  }
-];
-
-// export const linksForTags = [
-//   {
-//     name: "tag1",
-//     path: "/"
-//   },
-//   {
-//     name: "tag2",
-//     path: "/"
-//   },
-//   {
-//     name: "tag3",
-//     path: "/"
-//   }
-// ];
-
 export default function MobileWidgets({
-  linksForWidgets
+  linksForWidgets,
+  allPosts
 }: {
   linksForWidgets: linksForWidgetsType;
+  allPosts: allPostTitlesType[];
 }) {
   const dispatch = useAppDispatch();
   const nameOfActiveWidget = useAppSelector(
@@ -211,7 +78,9 @@ export default function MobileWidgets({
             theme={WidgetThemes.Default}
           />
         )}
-        {nameOfActiveWidget === WIDGETS[2].name && <SearchBar />}
+        {nameOfActiveWidget === WIDGETS[2].name && (
+          <SearchBar allPosts={allPosts} />
+        )}
         {nameOfActiveWidget === WIDGETS[3].name && (
           <LinksWidget
             title="tags"

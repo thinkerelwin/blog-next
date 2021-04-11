@@ -7,6 +7,7 @@ import Posts from "@/features/post/Posts";
 import MobileWidgets from "@/features/widget/MobileWidgets";
 
 import {
+  getAllPosts,
   getPathsForArchives,
   getLinksForWidgets
 } from "@/utils/getLinksForWidgets";
@@ -16,7 +17,8 @@ const dateFormat = "YYYY-MM-DDTHH:mm:ss[Z]";
 export default function ArticlesSortedByDate({
   posts,
   dateForDisplay,
-  linksForWidgets
+  linksForWidgets,
+  allPosts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -30,8 +32,9 @@ export default function ArticlesSortedByDate({
         posts={posts}
         linksForWidgets={linksForWidgets}
         sortBy={`Month: ${dateForDisplay}`}
+        allPosts={allPosts}
       />
-      <MobileWidgets linksForWidgets={linksForWidgets} />
+      <MobileWidgets linksForWidgets={linksForWidgets} allPosts={allPosts} />
     </>
   );
 }
@@ -53,12 +56,14 @@ export async function getStaticProps(context: { params: { date: string } }) {
   ).json();
 
   const linksForWidgets = await getLinksForWidgets();
+  const allPosts = await getAllPosts();
 
   return {
     props: {
       posts: res,
       dateForDisplay: startDate.format("MMMM YYYY"),
-      linksForWidgets
+      linksForWidgets,
+      allPosts
     },
     revalidate: 24 * 60 * 60
   };

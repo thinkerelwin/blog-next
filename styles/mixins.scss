@@ -28,6 +28,12 @@
   }
 }
 
+@mixin hide-long-text() {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @mixin fade-in {
   animation: fadeIn ease 0.3s;
 }

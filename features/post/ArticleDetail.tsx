@@ -7,17 +7,18 @@ import Footer from "@/components/Footer";
 
 import { PostType } from "@/features/post/Article";
 import { linksForWidgetsType } from "@/features/widget/MobileWidgets";
+import { allPostTitlesType } from "@/features/widget/SearchBar";
 
 import styles from "./ArticleDetail.module.scss";
 
-const tags = ["desk", "drafting"];
-
 export default function ArticleDetail({
   post,
-  linksForWidgets
+  linksForWidgets,
+  allPosts
 }: {
   post: PostType;
   linksForWidgets: linksForWidgetsType;
+  allPosts: allPostTitlesType[];
 }) {
   return (
     <>
@@ -26,16 +27,16 @@ export default function ArticleDetail({
           <Article post={post}>
             <footer className={styles.footer}>
               <h4 className={styles["tag-header"]}>Tagged:</h4>
-              {tags.map((tagName) => (
-                <Link key={tagName} href={`/tags/${tagName}`}>
-                  <a className={styles.tag}>{tagName}</a>
+              {post.tags.map(({ tag }) => (
+                <Link key={tag} href={`/tags/${tag}`}>
+                  <a className={styles.tag}>{tag}</a>
                 </Link>
               ))}
             </footer>
           </Article>
           <Pencil cn={styles.pencil} />
         </main>
-        <SidePanel linksForWidgets={linksForWidgets} />
+        <SidePanel linksForWidgets={linksForWidgets} allPosts={allPosts} />
       </div>
       <Footer />
     </>

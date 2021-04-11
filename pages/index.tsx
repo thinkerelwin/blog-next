@@ -6,11 +6,12 @@ import Posts from "@/features/post/Posts";
 import MainTitle from "@/components/MainTitle";
 import MobileWidgets from "@/features/widget/MobileWidgets";
 
-import { getLinksForWidgets } from "@/utils/getLinksForWidgets";
+import { getAllPosts, getLinksForWidgets } from "@/utils/getLinksForWidgets";
 
 export default function Home({
   posts,
-  linksForWidgets
+  linksForWidgets,
+  allPosts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -20,19 +21,25 @@ export default function Home({
       </Head>
 
       <MainTitle />
-      <Posts posts={posts} linksForWidgets={linksForWidgets} />
-      <MobileWidgets linksForWidgets={linksForWidgets} />
+      <Posts
+        posts={posts}
+        linksForWidgets={linksForWidgets}
+        allPosts={allPosts}
+      />
+      <MobileWidgets linksForWidgets={linksForWidgets} allPosts={allPosts} />
     </>
   );
 }
 
 export async function getStaticProps(context: GetStaticProps) {
   const linksForWidgets = await getLinksForWidgets();
+  const allPosts = await getAllPosts();
 
   return {
     props: {
       posts: linksForWidgets.recentPosts,
-      linksForWidgets
+      linksForWidgets,
+      allPosts
     },
     revalidate: 24 * 60 * 60
   };
@@ -40,3 +47,4 @@ export async function getStaticProps(context: GetStaticProps) {
 
 // TODO SEO
 // TODO GA
+// TODO check favicon & title

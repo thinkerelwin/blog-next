@@ -6,11 +6,12 @@ import ArticleDetail from "@/features/post/ArticleDetail";
 import MobileWidgets from "@/features/widget/MobileWidgets";
 
 import { OriginalPostType } from "@/features/post/Article";
-import { getLinksForWidgets } from "@/utils/getLinksForWidgets";
+import { getAllPosts, getLinksForWidgets } from "@/utils/getLinksForWidgets";
 
 export default function ArticleDetailContainer({
   post,
-  linksForWidgets
+  linksForWidgets,
+  allPosts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -20,8 +21,12 @@ export default function ArticleDetailContainer({
       </Head>
 
       <MainTitle />
-      <ArticleDetail post={post} linksForWidgets={linksForWidgets} />
-      <MobileWidgets linksForWidgets={linksForWidgets} />
+      <ArticleDetail
+        post={post}
+        linksForWidgets={linksForWidgets}
+        allPosts={allPosts}
+      />
+      <MobileWidgets linksForWidgets={linksForWidgets} allPosts={allPosts} />
     </>
   );
 }
@@ -32,9 +37,10 @@ export async function getStaticProps(context: { params: { slug: string } }) {
   ).json();
 
   const linksForWidgets = await getLinksForWidgets();
+  const allPosts = await getAllPosts();
 
   return {
-    props: { post: res[0], linksForWidgets },
+    props: { post: res[0], linksForWidgets, allPosts },
     revalidate: 24 * 60 * 60
   };
 }

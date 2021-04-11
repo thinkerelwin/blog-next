@@ -7,11 +7,12 @@ import MainTitle from "@/components/MainTitle";
 import MobileWidgets from "@/features/widget/MobileWidgets";
 
 import { PostType } from "@/features/post/Article";
-import { getLinksForWidgets } from "@/utils/getLinksForWidgets";
+import { getAllPosts, getLinksForWidgets } from "@/utils/getLinksForWidgets";
 
 export default function ArticlesSortedByTag({
   posts,
-  linksForWidgets
+  linksForWidgets,
+  allPosts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
   const { tag } = router.query;
@@ -28,8 +29,9 @@ export default function ArticlesSortedByTag({
         posts={posts}
         linksForWidgets={linksForWidgets}
         sortBy={`Tag: ${tag}`}
+        allPosts={allPosts}
       />
-      <MobileWidgets linksForWidgets={linksForWidgets} />
+      <MobileWidgets linksForWidgets={linksForWidgets} allPosts={allPosts} />
     </>
   );
 }
@@ -47,9 +49,10 @@ export async function getStaticProps(context: { params: { tag: string } }) {
   });
 
   const linksForWidgets = await getLinksForWidgets();
+  const allPosts = await getAllPosts();
 
   return {
-    props: { posts: postWithTags, linksForWidgets },
+    props: { posts: postWithTags, linksForWidgets, allPosts },
     revalidate: 24 * 60 * 60
   };
 }

@@ -1,5 +1,7 @@
 @use '@/styles/mixins';
 
+$result-padding-top: 3px;
+
 .container {
   @include mixins.fade-in;
 
@@ -23,6 +25,7 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   display: flex;
+  position: relative;
   @include mixins.rwd(l) {
     font-size: 1.3rem;
   }
@@ -54,8 +57,7 @@
   font-size: 2.25rem;
   height: 40px;
   outline: none;
-  padding: 3px 8px;
-  text-transform: capitalize;
+  padding: $result-padding-top 8px;
   width: 100%;
   @include mixins.rwd(md) {
     font-size: 1.5rem;
@@ -79,4 +81,31 @@
   height: 24px;
   opacity: 0.5;
   width: 24px;
+}
+
+.results {
+  background-color: white;
+  border-radius: inherit;
+  display: block;
+  font-size: 2.25rem;
+  left: 0;
+  max-height: 800%;
+  overflow-y: auto;
+  position: absolute;
+  top: calc(100% + 1px);
+  width: 100%;
+  @include mixins.rwd(md) {
+    font-size: 1.5rem;
+  }
+  @include mixins.rwd(l) {
+    font-size: 1.3rem;
+  }
+}
+
+.result {
+  @include mixins.hide-long-text;
+
+  color: inherit;
+  display: block;
+  padding: $result-padding-top 8px;
 }

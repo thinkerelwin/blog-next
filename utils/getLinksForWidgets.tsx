@@ -75,3 +75,16 @@ export async function getLinksForWidgets() {
     recentPosts
   };
 }
+
+export async function getAllPosts() {
+  const posts = await (await fetch("http://localhost:1337/posts")).json();
+
+  const allPosts = posts.map((post: PostType) => {
+    return {
+      name: post.title.toLowerCase(),
+      path: `/posts/${post.slug}`
+    };
+  });
+
+  return allPosts;
+}

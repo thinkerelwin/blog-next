@@ -5,17 +5,20 @@ import Footer from "@/components/Footer";
 
 import { PostType } from "@/features/post/Article";
 import { linksForWidgetsType } from "@/features/widget/MobileWidgets";
+import { allPostTitlesType } from "@/features/widget/SearchBar";
 
 import styles from "./Posts.module.scss";
 
 export default function Posts({
   posts,
   sortBy,
-  linksForWidgets
+  linksForWidgets,
+  allPosts
 }: {
   posts: PostType[];
   sortBy?: string;
   linksForWidgets: linksForWidgetsType;
+  allPosts: allPostTitlesType[];
 }) {
   return (
     <>
@@ -26,7 +29,7 @@ export default function Posts({
             <Article key={post.id} post={post} isPreview />
           ))}
         </main>
-        <SidePanel linksForWidgets={linksForWidgets} />
+        <SidePanel linksForWidgets={linksForWidgets} allPosts={allPosts} />
       </div>
       <Footer />
     </>
