@@ -6,12 +6,19 @@ import SidePanel from "./SidePanel";
 import Footer from "@/components/Footer";
 
 import { PostType } from "@/features/post/Article";
+import { linksForWidgetsType } from "@/features/widget/MobileWidgets";
 
 import styles from "./ArticleDetail.module.scss";
 
 const tags = ["desk", "drafting"];
 
-export default function ArticleDetail({ post }: { post: PostType }) {
+export default function ArticleDetail({
+  post,
+  linksForWidgets
+}: {
+  post: PostType;
+  linksForWidgets: linksForWidgetsType;
+}) {
   return (
     <>
       <div className={styles["outer-container"]}>
@@ -28,7 +35,7 @@ export default function ArticleDetail({ post }: { post: PostType }) {
           </Article>
           <Pencil cn={styles.pencil} />
         </main>
-        <SidePanel />
+        <SidePanel linksForWidgets={linksForWidgets} />
       </div>
       <Footer />
     </>

@@ -4,15 +4,18 @@ import SidePanel from "./SidePanel";
 import Footer from "@/components/Footer";
 
 import { PostType } from "@/features/post/Article";
+import { linksForWidgetsType } from "@/features/widget/MobileWidgets";
 
 import styles from "./Posts.module.scss";
 
 export default function Posts({
   posts,
-  sortBy
+  sortBy,
+  linksForWidgets
 }: {
   posts: PostType[];
   sortBy?: string;
+  linksForWidgets: linksForWidgetsType;
 }) {
   return (
     <>
@@ -23,7 +26,7 @@ export default function Posts({
             <Article key={post.id} post={post} isPreview />
           ))}
         </main>
-        <SidePanel />
+        <SidePanel linksForWidgets={linksForWidgets} />
       </div>
       <Footer />
     </>

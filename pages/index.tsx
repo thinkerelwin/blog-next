@@ -6,8 +6,11 @@ import Posts from "@/features/post/Posts";
 import MainTitle from "@/components/MainTitle";
 import MobileWidgets from "@/features/widget/MobileWidgets";
 
+import { getLinksForWidgets } from "@/utils/getLinksForWidgets";
+
 export default function Home({
-  posts
+  posts,
+  linksForWidgets
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -17,17 +20,23 @@ export default function Home({
       </Head>
 
       <MainTitle />
-      <Posts posts={posts} />
-      <MobileWidgets />
+      <Posts posts={posts} linksForWidgets={linksForWidgets} />
+      <MobileWidgets linksForWidgets={linksForWidgets} />
     </>
   );
 }
 
 export async function getStaticProps(context: GetStaticProps) {
-  const posts = await (await fetch("http://localhost:1337/posts")).json();
+  const linksForWidgets = await getLinksForWidgets();
 
   return {
-    props: { posts },
+    props: {
+      posts: linksForWidgets.recentPosts,
+      linksForWidgets
+    },
     revalidate: 24 * 60 * 60
   };
 }
+
+// TODO SEO
+// TODO GA

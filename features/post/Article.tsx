@@ -65,7 +65,7 @@ export default function Article({
       })}
     >
       {hasImage && (
-        <Link href="/">
+        <Link href={`/posts/${post.slug}`}>
           <a className={styles["image-link"]}>
             <Image
               className={styles.image}

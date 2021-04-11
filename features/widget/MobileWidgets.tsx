@@ -9,6 +9,8 @@ import { useAppDispatch, useAppSelector } from "@/store/index";
 import { setActiveWidget } from "./widgetSlice";
 
 import { WIDGETS } from "@/features/widget/Tabber";
+import { LinkType } from "@/features/widget/LinksWidget";
+import { PostType } from "@/features/post/Article";
 
 import styles from "./MobileWidgets.module.scss";
 
@@ -17,56 +19,63 @@ export enum WidgetThemes {
   Alert = "pink"
 }
 
-export const linksForMonth = [
-  {
-    name: "April 2021",
-    path: "/"
-  },
-  {
-    name: "March 2021",
-    path: "/"
-  },
-  {
-    name: "February 2021",
-    path: "/"
-  },
-  {
-    name: "January 2021",
-    path: "/"
-  },
-  {
-    name: "December 2020",
-    path: "/"
-  },
-  {
-    name: "November 2020",
-    path: "/"
-  },
-  {
-    name: "October 2020",
-    path: "/"
-  },
-  {
-    name: "September 2020",
-    path: "/"
-  },
-  {
-    name: "August 2020",
-    path: "/"
-  },
-  {
-    name: "July 2020",
-    path: "/"
-  },
-  {
-    name: "June 2020",
-    path: "/"
-  },
-  {
-    name: "May 2020",
-    path: "/"
-  }
-];
+export interface linksForWidgetsType {
+  linksForArchives: LinkType[];
+  linksForTags: LinkType[];
+  linksForRecentPosts: LinkType[];
+  recentPosts: PostType[];
+}
+
+// export const linksForMonth = [
+//   {
+//     name: "April 2021",
+//     path: "/"
+//   },
+//   {
+//     name: "March 2021",
+//     path: "/"
+//   },
+//   {
+//     name: "February 2021",
+//     path: "/"
+//   },
+//   {
+//     name: "January 2021",
+//     path: "/"
+//   },
+//   {
+//     name: "December 2020",
+//     path: "/"
+//   },
+//   {
+//     name: "November 2020",
+//     path: "/"
+//   },
+//   {
+//     name: "October 2020",
+//     path: "/"
+//   },
+//   {
+//     name: "September 2020",
+//     path: "/"
+//   },
+//   {
+//     name: "August 2020",
+//     path: "/"
+//   },
+//   {
+//     name: "July 2020",
+//     path: "/"
+//   },
+//   {
+//     name: "June 2020",
+//     path: "/"
+//   },
+//   {
+//     name: "May 2020",
+//     path: "/"
+//   }
+// ];
 
 export const linksForPosts = [
   {
@@ -139,22 +148,26 @@ export const linksForPosts = [
   }
 ];
 
-export const linksForTags = [
-  {
-    name: "tag1",
-    path: "/"
-  },
-  {
-    name: "tag2",
-    path: "/"
-  },
-  {
-    name: "tag3",
-    path: "/"
-  }
-];
+// export const linksForTags = [
+//   {
+//     name: "tag1",
+//     path: "/"
+//   },
+//   {
+//     name: "tag2",
+//     path: "/"
+//   },
+//   {
+//     name: "tag3",
+//     path: "/"
+//   }
+// ];
 
-export default function MobileWidgets() {
+export default function MobileWidgets({
+  linksForWidgets
+}: {
+  linksForWidgets: linksForWidgetsType;
+}) {
   const dispatch = useAppDispatch();
   const nameOfActiveWidget = useAppSelector(
     (state) => state.widget.nameOfActiveWidget
@@ -187,14 +200,14 @@ export default function MobileWidgets() {
         {nameOfActiveWidget === WIDGETS[0].name && (
           <LinksWidget
             title="recent posts"
-            links={linksForPosts}
+            links={linksForWidgets.linksForRecentPosts}
             theme={WidgetThemes.Alert}
           />
         )}
         {nameOfActiveWidget === WIDGETS[1].name && (
           <LinksWidget
             title="archives"
-            links={linksForMonth}
+            links={linksForWidgets.linksForArchives}
             theme={WidgetThemes.Default}
           />
         )}
@@ -202,7 +215,7 @@ export default function MobileWidgets() {
         {nameOfActiveWidget === WIDGETS[3].name && (
           <LinksWidget
             title="tags"
-            links={linksForTags}
+            links={linksForWidgets.linksForTags}
             theme={WidgetThemes.Default}
           />
         )}

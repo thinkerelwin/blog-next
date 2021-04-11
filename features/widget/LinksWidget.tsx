@@ -4,12 +4,14 @@ import classnames from "classnames";
 
 import styles from "./LinksWidget.module.scss";
 
-interface LinksWidgetType {
+export interface LinkType {
+  name: string;
+  path: string;
+}
+
+export interface LinksWidgetType {
   title: string;
-  links: {
-    name: string;
-    path: string;
-  }[];
+  links: LinkType[];
   theme: string;
 }
 
