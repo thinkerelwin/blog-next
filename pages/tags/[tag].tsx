@@ -20,7 +20,7 @@ export default function ArticlesSortedByTag({
   return (
     <>
       <Head>
-        <title>Elwin's Blog</title>
+        <title>{`Tag: ${tag}`}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

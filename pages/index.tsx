@@ -47,4 +47,4 @@ export async function getStaticProps(context: GetStaticProps) {
 
 // TODO SEO
 // TODO GA
-// TODO check favicon & title
+// User Data Collection Acknowledgement: https://app.privacypolicies.com/wizard/privacy-policy

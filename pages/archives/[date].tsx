@@ -23,7 +23,7 @@ export default function ArticlesSortedByDate({
   return (
     <>
       <Head>
-        <title>article title</title>
+        <title>{`Month: ${dateForDisplay}`}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
