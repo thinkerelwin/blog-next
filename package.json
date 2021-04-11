@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
+    "deploy": "next build && next export",
     "analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint:js": "eslint '**/*.{js,jsx,ts,tsx}' --fix",

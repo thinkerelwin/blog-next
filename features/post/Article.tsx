@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import dayjs from "dayjs";
 import classnames from "classnames";
 
@@ -14,7 +13,19 @@ interface CoverImageType {
   caption: string;
   createdAt: string;
   ext: string;
-  formats: Object; // helpful it if using srcset attribute
+  formats: {
+    [size: string]: {
+      ext: string;
+      hash: string;
+      height: number;
+      mime: string;
+      name: string;
+      path: null;
+      size: number;
+      url: string;
+      width: number;
+    };
+  }; // helpful it if using srcset attribute
   hash: string;
   height: number;
   id: string;
@@ -58,6 +69,8 @@ export default function Article({
 
   if (!snitizedContent) return null;
 
+  console.log(post);
+
   return (
     <article
       className={classnames(styles.container, {
@@ -67,14 +80,13 @@ export default function Article({
       {hasImage && (
         <Link href={`/posts/${post.slug}`}>
           <a className={styles["image-link"]}>
-            <Image
+            <img
               className={styles.image}
-              // src="https://source.unsplash.com/_xmAPHUXXiU/1920x1279"
-              src={`http:localhost:1337${post.cover_image.url}`}
+              srcSet={`http://localhost:1337${post.cover_image.formats.small.url} ${post.cover_image.formats.small.width}w, http://localhost:1337${post.cover_image.formats.medium.url} ${post.cover_image.formats.medium.width}w, http://localhost:1337${post.cover_image.formats.large.url} ${post.cover_image.formats.large.width}w`}
+              sizes={`{max-width: 37.5em} ${post.cover_image.formats.small.width}px, {max-width: 56.25em} ${post.cover_image.formats.medium.width}px, {max-width: 112.5em} ${post.cover_image.formats.large.width}px`}
               alt="front cover"
-              layout="fill"
-              objectFit="fill"
             />
+            {/* TODO image size by strapi is not customized */}
             <Clip />
           </a>
         </Link>

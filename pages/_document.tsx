@@ -4,6 +4,7 @@ import { GA_TRACKING_ID, GTM_TRACKING_ID } from "@/utils/GA";
 
 class MyDocument extends Document {
   render() {
+    // const shouldeEnableGA = process.env.NEXT_PUBLIC_SHOULD_ENABLE_GA;
     const shouldeEnableGA = true;
     return (
       <Html>
@@ -32,7 +33,7 @@ class MyDocument extends Document {
                   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                  })(window,document,'script','dataLayer',${GTM_TRACKING_ID});`
+                  })(window,document,'script','dataLayer','${GTM_TRACKING_ID}');`
                 }}
               />
               {/* <!-- End Google Tag Manager --> */}
