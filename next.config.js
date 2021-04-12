@@ -5,15 +5,13 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 module.exports = withBundleAnalyzer({
+  target: "serverless",
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")]
   },
   images: {
     domains: ["source.unsplash.com", "localhost"]
-  },
-  env: {
-    // customKey: 'my-value',
   },
   webpack(config) {
     config.module.rules.push({
