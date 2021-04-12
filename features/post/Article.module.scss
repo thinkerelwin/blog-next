@@ -12,10 +12,10 @@
   position: relative;
   width: 100%;
   @include mixins.rwd(md) {
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
   }
   @include mixins.rwd(l) {
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     padding-bottom: 3rem;
   }
   &::before {
@@ -54,7 +54,6 @@
 }
 
 .image-link {
-  padding-bottom: 71%;
   position: relative;
   width: 100%;
   svg {

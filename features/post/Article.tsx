@@ -86,7 +86,6 @@ export default function Article({
               sizes={`{max-width: 37.5em} ${post.cover_image.formats.small.width}px, {max-width: 56.25em} ${post.cover_image.formats.medium.width}px, {max-width: 112.5em} ${post.cover_image.formats.large.width}px`}
               alt="front cover"
             />
-            {/* TODO image size by strapi is not customized */}
             <Clip />
           </a>
         </Link>

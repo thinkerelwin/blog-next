@@ -50,6 +50,48 @@ export default function MobileWidgets({
     dispatch(setActiveWidget(targetName));
   }
 
+  function TabFactory({
+    nameOfActiveWidget,
+    WIDGETS
+  }: {
+    nameOfActiveWidget: string;
+    WIDGETS: {
+      name: string;
+      imgName: string;
+    }[];
+  }) {
+    switch (nameOfActiveWidget) {
+      case WIDGETS[0].name:
+        return (
+          <LinksWidget
+            title="recent posts"
+            links={linksForWidgets.linksForRecentPosts}
+            theme={WidgetThemes.Alert}
+          />
+        );
+      case WIDGETS[1].name:
+        return (
+          <LinksWidget
+            title="archives"
+            links={linksForWidgets.linksForArchives}
+            theme={WidgetThemes.Default}
+          />
+        );
+      case WIDGETS[2].name:
+        return <SearchBar allPosts={allPosts} />;
+      case WIDGETS[3].name:
+        return (
+          <LinksWidget
+            title="tags"
+            links={linksForWidgets.linksForTags}
+            theme={WidgetThemes.Default}
+          />
+        );
+      default:
+        return null;
+    }
+  }
+
   useEffect(() => {
     document.querySelector("body")!.style.overflow = hasActiveTab
       ? "hidden"
@@ -63,31 +105,7 @@ export default function MobileWidgets({
           [styles.active]: hasActiveTab
         })}
       >
-        {/* TODO can be grouped with a switch or */}
-        {nameOfActiveWidget === WIDGETS[0].name && (
-          <LinksWidget
-            title="recent posts"
-            links={linksForWidgets.linksForRecentPosts}
-            theme={WidgetThemes.Alert}
-          />
-        )}
-        {nameOfActiveWidget === WIDGETS[1].name && (
-          <LinksWidget
-            title="archives"
-            links={linksForWidgets.linksForArchives}
-            theme={WidgetThemes.Default}
-          />
-        )}
-        {nameOfActiveWidget === WIDGETS[2].name && (
-          <SearchBar allPosts={allPosts} />
-        )}
-        {nameOfActiveWidget === WIDGETS[3].name && (
-          <LinksWidget
-            title="tags"
-            links={linksForWidgets.linksForTags}
-            theme={WidgetThemes.Default}
-          />
-        )}
+        {TabFactory({ nameOfActiveWidget, WIDGETS })}
       </div>
       <Tabber nameOfActiveWidget={nameOfActiveWidget} changeTab={changeTab} />
     </>
