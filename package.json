@@ -5,14 +5,15 @@
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "deploy": "next build && next export",
+    "deploy": "next export",
     "analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint:js": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
     "lint:css": "stylelint '**/*.{css,scss,sass}' --fix",
     "lint:format": "prettier '**/*.{js,jsx,ts,tsx,json,css,scss,md}' --write --ignore-unknown",
     "type-check": "tsc -p .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "starter": "serve out"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
