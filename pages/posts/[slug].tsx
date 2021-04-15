@@ -41,7 +41,7 @@ export default function ArticleDetailContainer({
 
 export async function getStaticProps(context: { params: { slug: string } }) {
   const res = await (
-    await fetch(`http://localhost:1337/posts?slug=${context.params.slug}`)
+    await fetch(`${process.env.BACKEND_URL}/posts?slug=${context.params.slug}`)
   ).json();
 
   const linksForWidgets = await getLinksForWidgets();
@@ -54,7 +54,7 @@ export async function getStaticProps(context: { params: { slug: string } }) {
 }
 
 export async function getStaticPaths() {
-  const res = await (await fetch("http://localhost:1337/posts")).json();
+  const res = await (await fetch(`${process.env.BACKEND_URL}/posts`)).json();
 
   const paths = res.map((post: OriginalPostType) => ({
     params: { slug: post.slug }

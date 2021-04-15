@@ -49,9 +49,9 @@ export async function getStaticProps(context: { params: { date: string } }) {
 
   const res = await (
     await fetch(
-      `http://localhost:1337/posts?createdAt_gte=${startDate.format(
+      `${process.env.BACKEND_URL}/posts?created_at_gte=${startDate.format(
         dateFormat
-      )}&createdAt_lte=${endDate.format(dateFormat)}`
+      )}&created_at_lte=${endDate.format(dateFormat)}`
     )
   ).json();
 
@@ -70,7 +70,7 @@ export async function getStaticProps(context: { params: { date: string } }) {
 }
 
 export async function getStaticPaths() {
-  const res = await (await fetch("http://localhost:1337/posts")).json();
+  const res = await (await fetch(`${process.env.BACKEND_URL}/posts`)).json();
 
-  return { paths: getPathsForArchives(res[0].createdAt), fallback: false };
+  return { paths: getPathsForArchives(res[0].created_at), fallback: false };
 }

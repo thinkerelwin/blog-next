@@ -27,7 +27,7 @@ export function getPathsForArchives(dateOfFirstPost: string) {
 const FETCH_RANGE = 10;
 
 export async function getLinksForWidgets() {
-  const tags = await (await fetch(`http://localhost:1337/tags`)).json();
+  const tags = await (await fetch(`${process.env.BACKEND_URL}/tags`)).json();
 
   const linksForTags = tags.map(({ tag }: { tag: string }) => ({
     name: tag,
@@ -35,9 +35,9 @@ export async function getLinksForWidgets() {
   }));
 
   const initialPost = await (
-    await fetch("http://localhost:1337/posts?_start=0&_limit=1")
+    await fetch(`${process.env.BACKEND_URL}/posts?_start=0&_limit=1`)
   ).json();
-  const listForArchives = getPathsForArchives(initialPost[0].createdAt);
+  const listForArchives = getPathsForArchives(initialPost[0].created_at);
   const linksForArchives = listForArchives.map(({ params: { date } }) => {
     const month = dayjs()
       .set("month", Number(date.slice(-2)) - 1)
@@ -49,11 +49,11 @@ export async function getLinksForWidgets() {
   });
 
   const NumberOfPosts = await (
-    await fetch("http://localhost:1337/posts/count")
+    await fetch(`${process.env.BACKEND_URL}/posts/count`)
   ).json();
   const recentPosts: PostType[] = await (
     await fetch(
-      `http://localhost:1337/posts?_start=${Math.max(
+      `${process.env.BACKEND_URL}/posts?_start=${Math.max(
         NumberOfPosts - FETCH_RANGE,
         0
       )}`
@@ -77,7 +77,7 @@ export async function getLinksForWidgets() {
 }
 
 export async function getAllPosts() {
-  const posts = await (await fetch("http://localhost:1337/posts")).json();
+  const posts = await (await fetch(`${process.env.BACKEND_URL}/posts`)).json();
 
   const allPosts = posts.map((post: PostType) => {
     return {

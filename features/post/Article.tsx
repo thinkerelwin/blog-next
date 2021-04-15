@@ -11,7 +11,7 @@ import styles from "./Article.module.scss";
 interface CoverImageType {
   alternativeText: string;
   caption: string;
-  createdAt: string;
+  created_at: string;
   ext: string;
   formats: {
     [size: string]: {
@@ -42,7 +42,7 @@ interface CoverImageType {
 export interface PostType {
   content: string;
   cover_image: CoverImageType;
-  createdAt: string;
+  created_at: string;
   id: string;
   published_at: string;
   slug: string;
@@ -69,8 +69,6 @@ export default function Article({
 
   if (!snitizedContent) return null;
 
-  console.log(post);
-
   return (
     <article
       className={classnames(styles.container, {
@@ -82,7 +80,7 @@ export default function Article({
           <a className={styles["image-link"]}>
             <img
               className={styles.image}
-              srcSet={`http://localhost:1337${post.cover_image.formats.small.url} ${post.cover_image.formats.small.width}w, http://localhost:1337${post.cover_image.formats.medium.url} ${post.cover_image.formats.medium.width}w, http://localhost:1337${post.cover_image.formats.large.url} ${post.cover_image.formats.large.width}w`}
+              srcSet={`${post.cover_image.formats.small.url} ${post.cover_image.formats.small.width}w, ${post.cover_image.formats.medium.url} ${post.cover_image.formats.medium.width}w, ${post.cover_image.formats.large.url} ${post.cover_image.formats.large.width}w`}
               sizes={`{max-width: 37.5em} ${post.cover_image.formats.small.width}px, {max-width: 56.25em} ${post.cover_image.formats.medium.width}px, {max-width: 112.5em} ${post.cover_image.formats.large.width}px`}
               alt="front cover"
             />

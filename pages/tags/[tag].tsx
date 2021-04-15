@@ -38,7 +38,7 @@ export default function ArticlesSortedByTag({
 
 export async function getStaticProps(context: { params: { tag: string } }) {
   const tags = await (
-    await fetch(`http://localhost:1337/tags?tag=${context.params.tag}`)
+    await fetch(`${process.env.BACKEND_URL}/tags?tag=${context.params.tag}`)
   ).json();
 
   const postWithTags = tags[0].posts.map((post: PostType) => {
@@ -58,7 +58,7 @@ export async function getStaticProps(context: { params: { tag: string } }) {
 }
 
 export async function getStaticPaths() {
-  const res = await (await fetch(`http://localhost:1337/tags`)).json();
+  const res = await (await fetch(`${process.env.BACKEND_URL}/tags`)).json();
 
   const paths = res.map(({ tag }: { tag: string }) => ({
     params: { tag }
