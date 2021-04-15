@@ -11,7 +11,7 @@ module.exports = withBundleAnalyzer({
     includePaths: [path.join(__dirname, "styles")]
   },
   images: {
-    domains: ["source.unsplash.com", "localhost"]
+    domains: ["source.unsplash.com", "https://res.cloudinary.com", "localhost"]
   },
   webpack(config) {
     config.module.rules.push({

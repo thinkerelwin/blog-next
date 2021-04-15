@@ -11,6 +11,7 @@
   padding: 0 1.25rem;
   @include mixins.rwd(md) {
     padding-left: var(--main-container-padding);
+    padding-right: var(--main-container-padding);
     padding-top: 3rem;
     width: 66.6%;
   }

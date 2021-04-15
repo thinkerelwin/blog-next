@@ -66,6 +66,7 @@ export default function Article({
 }) {
   const hasImage = post.cover_image?.url.length > 0;
   const snitizedContent = useSanitizer(post.content);
+  const imageFormats = post.cover_image.formats;
 
   if (!snitizedContent) return null;
 
@@ -80,8 +81,9 @@ export default function Article({
           <a className={styles["image-link"]}>
             <img
               className={styles.image}
-              srcSet={`${post.cover_image.formats.small.url} ${post.cover_image.formats.small.width}w, ${post.cover_image.formats.medium.url} ${post.cover_image.formats.medium.width}w, ${post.cover_image.formats.large.url} ${post.cover_image.formats.large.width}w`}
-              sizes={`{max-width: 37.5em} ${post.cover_image.formats.small.width}px, {max-width: 56.25em} ${post.cover_image.formats.medium.width}px, {max-width: 112.5em} ${post.cover_image.formats.large.width}px`}
+              src={imageFormats.small.url}
+              srcSet={`${imageFormats.small.url} ${imageFormats.small.width}w, ${imageFormats.medium.url} ${imageFormats.medium.width}w`}
+              sizes={`(max-width: 599px) ${imageFormats.small.width}px, (min-width: 600px) ${imageFormats.medium.width}px`}
               alt="front cover"
             />
             <Clip />
