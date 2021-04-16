@@ -4,8 +4,7 @@ import { GA_TRACKING_ID, GTM_TRACKING_ID } from "@/utils/GA";
 
 class MyDocument extends Document {
   render() {
-    // const shouldeEnableGA = process.env.NEXT_PUBLIC_SHOULD_ENABLE_GA;
-    const shouldeEnableGA = true;
+    const shouldeEnableGA = process.env.NEXT_PUBLIC_SHOULD_ENABLE_GA;
     return (
       <Html>
         <Head>

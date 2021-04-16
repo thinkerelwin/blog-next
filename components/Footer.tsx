@@ -21,6 +21,13 @@ export default function Footer() {
             <IcoMoon cn={styles.icon} iconName="github" />
           </a>
         </Link>
+        <a
+          href="https://www.iubenda.com/privacy-policy/38079897"
+          className={`${styles.link} ${styles.privacy}`}
+          title="Privacy Policy "
+        >
+          Privacy Policy
+        </a>
       </div>
     </footer>
   );
