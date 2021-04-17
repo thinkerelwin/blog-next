@@ -36,6 +36,10 @@ class MyDocument extends Document {
                 }}
               />
               {/* <!-- End Google Tag Manager --> */}
+              <meta
+                name="description"
+                content="Elwin's blog, sharing my tips and tricks on web development with a hands-on approach, including some review of books"
+              />
             </>
           )}
         </Head>
