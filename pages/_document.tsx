@@ -6,7 +6,7 @@ class MyDocument extends Document {
   render() {
     const shouldeEnableGA = process.env.NEXT_PUBLIC_SHOULD_ENABLE_GA;
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
           {shouldeEnableGA && (

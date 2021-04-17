@@ -67,7 +67,7 @@ export default function Tabber({
   return (
     <section id="tabber" className={classnames(styles.container)}>
       {WIDGETS.map(({ name, imgName }) => (
-        <button key={name} onClick={() => changeTab(name)}>
+        <button key={name} onClick={() => changeTab(name)} aria-label={imgName}>
           <IcoMoon
             cn={classnames(styles.image, {
               [styles.active]: nameOfActiveWidget === name

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { InferGetStaticPropsType } from "next";
 
 import MainTitle from "@/components/MainTitle";
 import ArticleDetail from "@/features/post/ArticleDetail";

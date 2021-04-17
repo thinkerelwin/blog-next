@@ -7,7 +7,6 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
 }
 
 .link {
@@ -22,6 +21,10 @@
 }
 
 .privacy.privacy {
-  align-self: flex-start;
   color: #5e8284;
+  display: block;
+  font-size: 13px;
+  margin: 0;
+  margin-bottom: 20px;
+  text-align: center;
 }
