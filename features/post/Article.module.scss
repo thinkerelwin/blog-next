@@ -151,6 +151,9 @@
   @include mixins.rwd(l) {
     font-size: 1.3rem;
   }
+  ul {
+    list-style: initial;
+  }
   &.preview {
     -webkit-box-orient: vertical;
     display: -webkit-box;

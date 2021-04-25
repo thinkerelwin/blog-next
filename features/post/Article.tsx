@@ -66,7 +66,7 @@ export default function Article({
 }) {
   const hasImage = post.cover_image?.url.length > 0;
   const sanitizedContent = useSanitizer(post.content);
-  const imageFormats = post.cover_image.formats;
+  const imageFormats = post.cover_image?.formats;
 
   if (!sanitizedContent) return null;
 
