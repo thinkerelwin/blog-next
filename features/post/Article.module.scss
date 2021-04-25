@@ -153,9 +153,9 @@
   }
   ul {
     list-style: initial;
+    padding-left: revert;
   }
-  ol,
-  ul {
+  ol {
     padding-left: revert;
   }
   &.preview {
