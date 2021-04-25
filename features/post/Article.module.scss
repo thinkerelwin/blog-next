@@ -163,13 +163,18 @@
   font-size: 2.25rem;
   margin-top: 1.25rem;
   text-align: center;
-  transition: coloer 0.2s;
+  transition: color 0.3s;
   @include mixins.rwd(sm) {
     font-size: 1.8rem;
   }
   @include mixins.rwd(md) {
     font-size: 1.5rem;
     margin-top: 2rem;
+  }
+  @media (hover: hover) {
+    &:hover {
+      color: #d16221;
+    }
   }
   &::after {
     content: "→";

@@ -32,6 +32,7 @@ export default function Footer() {
       </div>
       <a
         href="https://www.iubenda.com/privacy-policy/38079897"
+        rel="nofollow"
         className={styles.privacy}
         title="Privacy Policy "
       >
