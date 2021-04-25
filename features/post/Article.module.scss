@@ -154,6 +154,10 @@
   ul {
     list-style: initial;
   }
+  ol,
+  ul {
+    padding-left: revert;
+  }
   &.preview {
     -webkit-box-orient: vertical;
     display: -webkit-box;
