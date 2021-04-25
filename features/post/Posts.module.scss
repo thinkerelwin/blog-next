@@ -3,7 +3,7 @@
 @mixin container {
   display: flex;
   margin: 0 auto;
-  max-width: calc(1200px + (var(--main-container-padding) * 2));
+  max-width: calc(1500px + (var(--main-container-padding) * 2));
 }
 
 @mixin articles {

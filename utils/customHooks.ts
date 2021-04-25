@@ -1,5 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import marked from "marked";
+import prism from "prismjs";
 
 const createDOMPurify = require("dompurify");
 
@@ -34,6 +35,30 @@ export function usePrevious(value: number, initialValue: number = 0) {
 
   return ref.current;
 }
+
+const markedRenderer = new marked.Renderer();
+markedRenderer.code = (code, lang) => {
+  if (!lang) {
+    return `<pre><code>${code}</code></pre>`;
+  }
+  const hightlightedCode = markedRenderer.options.highlight
+    ? markedRenderer.options.highlight(code, lang)
+    : null;
+
+  const className = `language-${lang}`;
+  return `<pre class="${className}"><code class="${className}">${hightlightedCode}</code></pre>`;
+};
+
+marked.setOptions({
+  renderer: markedRenderer,
+  highlight: (code, lang) => {
+    if (prism.languages[lang]) {
+      return prism.highlight(code, prism.languages[lang], lang);
+    } else {
+      return code;
+    }
+  }
+});
 
 export function useSanitizer(content: string) {
   const [santitizedContent, setSantitizedContent] = useState("");
