@@ -16,7 +16,6 @@
     "starter": "serve out"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.5.1",
     "@types/marked": "^2.0.1",
     "babel-plugin-prismjs": "^2.0.1",
     "dayjs": "^1.10.4",
@@ -27,7 +26,6 @@
     "prismjs": "^1.23.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-redux": "^7.2.3",
     "sass": "^1.32.8"
   },
   "devDependencies": {

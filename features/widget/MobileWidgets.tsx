@@ -1,12 +1,9 @@
-import { useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import classnames from "classnames";
 
 import SearchBar from "@/features/widget/SearchBar";
 import LinksWidget from "@/features/widget/LinksWidget";
 import Tabber from "@/features/widget/Tabber";
-
-import { useAppDispatch, useAppSelector } from "@/store/index";
-import { setActiveWidget } from "./widgetSlice";
 
 import { WIDGETS } from "@/features/widget/Tabber";
 import { LinkType } from "@/features/widget/LinksWidget";
@@ -35,10 +32,7 @@ export default function MobileWidgets({
   linksForWidgets: linksForWidgetsType;
   allPosts: allPostTitlesType[];
 }) {
-  const dispatch = useAppDispatch();
-  const nameOfActiveWidget = useAppSelector(
-    (state) => state.widget.nameOfActiveWidget
-  );
+  const [nameOfActiveWidget, setNameOfActiveWidget] = useState("");
 
   const hasActiveTab = useMemo(() => nameOfActiveWidget.length > 0, [
     nameOfActiveWidget
@@ -47,7 +41,7 @@ export default function MobileWidgets({
   function changeTab(name: string) {
     const isSameTab = nameOfActiveWidget === name;
     const targetName = isSameTab ? "" : name;
-    dispatch(setActiveWidget(targetName));
+    setNameOfActiveWidget(targetName);
   }
 
   function TabFactory({
