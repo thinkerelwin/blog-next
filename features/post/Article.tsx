@@ -65,12 +65,12 @@ export default function Article({
   isPreview?: boolean;
 }) {
   const hasImage = post.cover_image?.url.length > 0;
-  // const sanitizedContent = useSanitizer(post.content);
+  const sanitizedContent = useSanitizer(post.content);
   const imageFormats = post.cover_image?.formats;
 
-  // console.log("post", post, sanitizedContent.length, !sanitizedContent);
+  console.log("post", post, sanitizedContent.length, !sanitizedContent);
 
-  // if (!sanitizedContent) return null;
+  if (!sanitizedContent) return null;
 
   return (
     <article
