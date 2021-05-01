@@ -1,8 +1,7 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import marked from "marked";
 import prism from "prismjs";
-
-const createDOMPurify = require("dompurify");
+import createDOMPurify from "dompurify";
 
 export function useMediaQuery(query: string) {
   const [doesMatch, onSetDoesMatch] = useState(false);
@@ -65,9 +64,7 @@ export function useSanitizer(content: string) {
 
   useEffect(() => {
     const DOMPurify = createDOMPurify(window);
-    const santitizedContent = DOMPurify.sanitize(marked(content), {
-      USE_PROFILES: { html: true }
-    });
+    const santitizedContent = DOMPurify.sanitize(marked(content));
     setSantitizedContent(santitizedContent);
   }, [content]);
 

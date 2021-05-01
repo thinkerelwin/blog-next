@@ -30,6 +30,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^10.2.0",
     "@types/classnames": "^2.2.11",
+    "@types/dompurify": "^2.2.2",
     "@types/gtag.js": "0.0.4",
     "@types/lodash": "^4.14.168",
     "@types/marked": "^2.0.2",
