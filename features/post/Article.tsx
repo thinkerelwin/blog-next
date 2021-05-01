@@ -65,10 +65,12 @@ export default function Article({
   isPreview?: boolean;
 }) {
   const hasImage = post.cover_image?.url.length > 0;
-  const sanitizedContent = useSanitizer(post.content);
+  // const sanitizedContent = useSanitizer(post.content);
   const imageFormats = post.cover_image?.formats;
 
-  if (!sanitizedContent) return null;
+  // console.log("post", post, sanitizedContent.length, !sanitizedContent);
+
+  // if (!sanitizedContent) return null;
 
   return (
     <article
@@ -111,7 +113,7 @@ export default function Article({
           className={classnames(styles.content, {
             [styles.preview]: isPreview
           })}
-          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+          dangerouslySetInnerHTML={{ __html: post.content }}
         ></div>
       }
       {isPreview && (
