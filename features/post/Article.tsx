@@ -3,10 +3,8 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import classnames from "classnames";
 
-import { useSanitizer } from "@/utils/customHooks";
 import Clip from "@/components/svg/Clip";
 import styles from "./Article.module.scss";
-// import DOMPurify from "dompurify";
 
 interface CoverImageType {
   alternativeText: string;
@@ -65,12 +63,7 @@ export default function Article({
   isPreview?: boolean;
 }) {
   const hasImage = post.cover_image?.url.length > 0;
-  const sanitizedContent = useSanitizer(post.content);
   const imageFormats = post.cover_image?.formats;
-
-  console.log("post", post, sanitizedContent.length, !sanitizedContent);
-
-  if (!sanitizedContent) return null;
 
   return (
     <article

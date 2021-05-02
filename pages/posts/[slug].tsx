@@ -11,6 +11,8 @@ import { getAllPosts, getLinksForWidgets } from "@/utils/getLinksForWidgets";
 import { PostType } from "@/features/post/Article";
 import { allPostTitlesType } from "@/features/widget/SearchBar";
 
+import md from "@/utils/sanitizer";
+
 export default function ArticleDetailContainer({
   post,
   linksForWidgets,
@@ -45,6 +47,8 @@ export async function getStaticProps(context: { params: { slug: string } }) {
 
   const linksForWidgets = await getLinksForWidgets();
   const allPosts = await getAllPosts();
+
+  res[0].content = md.render(res[0].content);
 
   return {
     props: { post: res[0], linksForWidgets, allPosts },

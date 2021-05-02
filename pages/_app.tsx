@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { pageview } from "@/utils/GA";
 
+import "prismjs/themes/prism-tomorrow.css";
 import "@/styles/normalize.css";
 import "@/styles/variables.css";
 import "@/styles/main.scss";
