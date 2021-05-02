@@ -1,30 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is the front end repo for my blog website, the backend repo is private. check my [blog post](https://passive-activist.netlify.app/posts/maintainable-code-for-gtag-mananger-with-universal-analytics) if you want to know more
 
-## Getting Started
+## Features
 
-First, run the development server:
+- **Syntax highlighting on markdown data:** so I can increase the readability of the Fenced Code Blocks in my post:  
+![syntax highlighting](./readme/syntax_highlighting.png 'syntax highlighting')
+- **High score on Lighthouse audition:** achieved by using the 'Static Generation' from Next.js and small bundle size(using webpack 5, and only include necessary libraries).
+![blog performance](./readme/blog_performance.png 'blog performance')
+- **With code quality in mind:** auto lint codes with **Eslint**, **Prettier**, **Stylelint** before commit, use **Code Climate** to get automated code review comments.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## License
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
