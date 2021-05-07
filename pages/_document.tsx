@@ -2,6 +2,10 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 
 import { GA_TRACKING_ID, GTM_TRACKING_ID } from "@/utils/GA";
 
+const SOCIAL_IMAGE_URL = "https://passive-activist.netlify.app/favicon.ico";
+const DESCRIPTION =
+  "Elwin's blog, sharing my tips and tricks on web development with a hands-on approach, including some review of books";
+
 class MyDocument extends Document {
   render() {
     const shouldeEnableGA = process.env.NEXT_PUBLIC_SHOULD_ENABLE_GA;
@@ -36,10 +40,7 @@ class MyDocument extends Document {
                 }}
               />
               {/* <!-- End Google Tag Manager --> */}
-              <meta
-                name="description"
-                content="Elwin's blog, sharing my tips and tricks on web development with a hands-on approach, including some review of books"
-              />
+              <meta name="description" content={DESCRIPTION} />
               {/* <!-- Open Graph / Facebook --> */}
               <meta property="og:type" content="website" />
               <meta
@@ -47,14 +48,8 @@ class MyDocument extends Document {
                 content="https://passive-activist.netlify.app/"
               />
               <meta property="og:title" content="Elwin's Blog" />
-              <meta
-                property="og:description"
-                content="Elwin's blog, sharing my tips and tricks on web development with a hands-on approach, including some review of books"
-              />
-              <meta
-                property="og:image"
-                content="https://passive-activist.netlify.app/favicon.ico"
-              />
+              <meta property="og:description" content={DESCRIPTION} />
+              <meta property="og:image" content={SOCIAL_IMAGE_URL} />
 
               {/* <!-- Twitter --> */}
               <meta property="twitter:card" content="summary_large_image" />
@@ -63,14 +58,8 @@ class MyDocument extends Document {
                 content="https://passive-activist.netlify.app/"
               />
               <meta property="twitter:title" content="Elwin's Blog" />
-              <meta
-                property="twitter:description"
-                content="Elwin's blog, sharing my tips and tricks on web development with a hands-on approach, including some review of books"
-              />
-              <meta
-                property="twitter:image"
-                content="https://passive-activist.netlify.app/favicon.ico"
-              />
+              <meta property="twitter:description" content={DESCRIPTION} />
+              <meta property="twitter:image" content={SOCIAL_IMAGE_URL} />
             </>
           )}
         </Head>
