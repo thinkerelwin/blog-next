@@ -38,6 +38,7 @@ interface CoverImageType {
 }
 
 export interface PostType {
+  abstract: string;
   content: string;
   cover_image: CoverImageType;
   created_at: string;
@@ -106,7 +107,9 @@ export default function Article({
           className={classnames(styles.content, {
             [styles.preview]: isPreview
           })}
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{
+            __html: isPreview ? post.abstract : post.content
+          }}
         ></div>
       }
       {isPreview && (

@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import MainTitle from "@/components/MainTitle";
 import Posts from "@/features/post/Posts";
 import MobileWidgets from "@/features/widget/MobileWidgets";
+import { markdownToHtml } from "@/utils/markdownToHtml";
 
 import {
   getAllPosts,
@@ -47,7 +48,7 @@ export async function getStaticProps(context: { params: { date: string } }) {
     .set("year", Number(date.slice(0, 4)));
   const endDate = startDate.add(1, "month");
 
-  const res = await (
+  const filteredPosts = await (
     await fetch(
       `${process.env.BACKEND_URL}/posts?created_at_gte=${startDate.format(
         dateFormat
@@ -55,12 +56,14 @@ export async function getStaticProps(context: { params: { date: string } }) {
     )
   ).json();
 
+  const transformedPosts = markdownToHtml(filteredPosts);
+
   const linksForWidgets = await getLinksForWidgets();
   const allPosts = await getAllPosts();
 
   return {
     props: {
-      posts: res,
+      posts: transformedPosts,
       dateForDisplay: startDate.format("MMMM YYYY"),
       linksForWidgets,
       allPosts

@@ -11,7 +11,7 @@ import { getAllPosts, getLinksForWidgets } from "@/utils/getLinksForWidgets";
 import { PostType } from "@/features/post/Article";
 import { allPostTitlesType } from "@/features/widget/SearchBar";
 
-import md from "@/utils/sanitizer";
+import { markdownToHtml } from "@/utils/markdownToHtml";
 
 export default function ArticleDetailContainer({
   post,
@@ -41,17 +41,17 @@ export default function ArticleDetailContainer({
 }
 
 export async function getStaticProps(context: { params: { slug: string } }) {
-  const res = await (
+  const post = await (
     await fetch(`${process.env.BACKEND_URL}/posts?slug=${context.params.slug}`)
   ).json();
 
   const linksForWidgets = await getLinksForWidgets();
   const allPosts = await getAllPosts();
 
-  res[0].content = md.render(res[0].content);
+  const transformedPost = markdownToHtml(post[0]);
 
   return {
-    props: { post: res[0], linksForWidgets, allPosts },
+    props: { post: transformedPost, linksForWidgets, allPosts },
     revalidate: 24 * 60 * 60
   };
 }

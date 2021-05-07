@@ -7,7 +7,7 @@ import MainTitle from "@/components/MainTitle";
 import MobileWidgets from "@/features/widget/MobileWidgets";
 
 import { getAllPosts, getLinksForWidgets } from "@/utils/getLinksForWidgets";
-import md from "@/utils/sanitizer";
+import { markdownToHtml } from "@/utils/markdownToHtml";
 
 export default function Home({
   posts,
@@ -36,13 +36,11 @@ export async function getStaticProps(context: GetStaticProps) {
   const linksForWidgets = await getLinksForWidgets();
   const allPosts = await getAllPosts();
 
-  linksForWidgets.recentPosts.forEach((post) => {
-    post.content = md.render(post.content);
-  });
+  const transformedPosts = markdownToHtml(linksForWidgets.recentPosts);
 
   return {
     props: {
-      posts: linksForWidgets.recentPosts,
+      posts: transformedPosts,
       linksForWidgets,
       allPosts
     },

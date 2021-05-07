@@ -8,6 +8,7 @@ import MobileWidgets from "@/features/widget/MobileWidgets";
 
 import { PostType } from "@/features/post/Article";
 import { getAllPosts, getLinksForWidgets } from "@/utils/getLinksForWidgets";
+import { markdownToHtml } from "@/utils/markdownToHtml";
 
 export default function ArticlesSortedByTag({
   posts,
@@ -48,11 +49,13 @@ export async function getStaticProps(context: { params: { tag: string } }) {
     };
   });
 
+  const transformedPosts = markdownToHtml(postWithTags);
+
   const linksForWidgets = await getLinksForWidgets();
   const allPosts = await getAllPosts();
 
   return {
-    props: { posts: postWithTags, linksForWidgets, allPosts },
+    props: { posts: transformedPosts, linksForWidgets, allPosts },
     revalidate: 24 * 60 * 60
   };
 }

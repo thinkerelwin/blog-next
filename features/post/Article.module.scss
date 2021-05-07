@@ -177,11 +177,14 @@
     padding-left: revert;
   }
 
-  &.preview {
+  &.preview p {
     -webkit-box-orient: vertical;
     display: -webkit-box;
-    -webkit-line-clamp: 8;
+    -webkit-line-clamp: 4;
     overflow: hidden;
+    @include mixins.rwd(sm) {
+      -webkit-line-clamp: 3;
+    }
   }
 }
 
