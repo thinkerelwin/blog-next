@@ -40,6 +40,37 @@ class MyDocument extends Document {
                 name="description"
                 content="Elwin's blog, sharing my tips and tricks on web development with a hands-on approach, including some review of books"
               />
+              {/* <!-- Open Graph / Facebook --> */}
+              <meta property="og:type" content="website" />
+              <meta
+                property="og:url"
+                content="https://passive-activist.netlify.app/"
+              />
+              <meta property="og:title" content="Elwin's Blog" />
+              <meta
+                property="og:description"
+                content="Elwin's blog, sharing my tips and tricks on web development with a hands-on approach, including some review of books"
+              />
+              <meta
+                property="og:image"
+                content="https://passive-activist.netlify.app/favicon.ico"
+              />
+
+              {/* <!-- Twitter --> */}
+              <meta property="twitter:card" content="summary_large_image" />
+              <meta
+                property="twitter:url"
+                content="https://passive-activist.netlify.app/"
+              />
+              <meta property="twitter:title" content="Elwin's Blog" />
+              <meta
+                property="twitter:description"
+                content="Elwin's blog, sharing my tips and tricks on web development with a hands-on approach, including some review of books"
+              />
+              <meta
+                property="twitter:image"
+                content="https://passive-activist.netlify.app/favicon.ico"
+              />
             </>
           )}
         </Head>

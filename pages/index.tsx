@@ -52,4 +52,3 @@ export async function getStaticProps(context: GetStaticProps) {
 
 // TODO add functionality to load image when it's close to the viewport
 // TODO add facebook Comments Plugin
-// TODO SEO fb, twitter
