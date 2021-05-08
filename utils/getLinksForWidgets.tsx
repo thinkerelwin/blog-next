@@ -59,14 +59,14 @@ export async function getLinksForWidgets() {
       )}`
     )
   ).json();
-  const linksForRecentPosts = recentPosts.map(
-    ({ title, slug }: { title: string; slug: string }) => {
+  const linksForRecentPosts = recentPosts
+    .map(({ title, slug }: { title: string; slug: string }) => {
       return {
         name: title,
         path: `/posts/${slug}`
       };
-    }
-  );
+    })
+    .reverse();
 
   return {
     linksForArchives,
