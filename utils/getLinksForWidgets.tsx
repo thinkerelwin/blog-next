@@ -26,6 +26,11 @@ export function getPathsForArchives(dateOfFirstPost: string) {
 
 const FETCH_RANGE = 10;
 
+function getTimestamp(dateString: string) {
+  const date = new Date(dateString);
+  return date.getTime();
+}
+
 export async function getLinksForWidgets() {
   const tags = await (await fetch(`${process.env.BACKEND_URL}/tags`)).json();
 
@@ -59,14 +64,19 @@ export async function getLinksForWidgets() {
       )}`
     )
   ).json();
-  const linksForRecentPosts = recentPosts
-    .map(({ title, slug }: { title: string; slug: string }) => {
+
+  recentPosts.sort(
+    (a, b) => getTimestamp(b.published_at) - getTimestamp(a.published_at)
+  );
+
+  const linksForRecentPosts = recentPosts.map(
+    ({ title, slug }: { title: string; slug: string }) => {
       return {
         name: title,
         path: `/posts/${slug}`
       };
-    })
-    .reverse();
+    }
+  );
 
   return {
     linksForArchives,

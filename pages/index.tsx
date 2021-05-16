@@ -35,6 +35,7 @@ export default function Home({
 export async function getStaticProps(context: GetStaticProps) {
   const linksForWidgets = await getLinksForWidgets();
   const allPosts = await getAllPosts();
+  allPosts.reverse();
 
   const transformedPosts = markdownToHtml(linksForWidgets.recentPosts);
 
