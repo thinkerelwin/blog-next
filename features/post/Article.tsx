@@ -32,7 +32,7 @@ interface CoverImageType {
   provider: string;
   related: string[];
   size: number;
-  updatedAt: string;
+  updated_at: string;
   url: string;
   width: number;
 }
@@ -47,7 +47,7 @@ export interface PostType {
   slug: string;
   tags: { tag: string }[];
   title: string;
-  updatedAt: string;
+  updated_at: string;
 }
 
 export interface OriginalPostType extends PostType {
@@ -98,7 +98,7 @@ export default function Article({
         <p className={`${styles.time} cute-font`}>
           Posted on{" "}
           <time className="t">
-            {dayjs(post.updatedAt).format("MMMM D, YYYY")}
+            {dayjs(post.updated_at).format("MMMM D, YYYY")}
           </time>
         </p>
       </header>
