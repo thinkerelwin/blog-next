@@ -22,7 +22,7 @@ const md = new MarkdownIt({
   }
 });
 
-md.use(require("markdown-it-footnote"));
-md.use(require("markdown-it-emoji/light"));
+// md.use(require("markdown-it-footnote"));
+// md.use(require("markdown-it-emoji/light"));
 
 export default md;

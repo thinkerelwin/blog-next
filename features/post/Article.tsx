@@ -51,7 +51,7 @@ export interface PostType {
 }
 
 export interface OriginalPostType extends PostType {
-  user: Object;
+  user: Record<string, unknown>;
 }
 
 export default function Article({

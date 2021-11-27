@@ -7,9 +7,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 module.exports = withBundleAnalyzer({
   target: "serverless",
   reactStrictMode: true,
-  future: {
-    webpack5: true
-  },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")]
   },

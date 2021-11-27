@@ -5,7 +5,7 @@ import classnames from "classnames";
 import styles from "./LinksWidget.module.scss";
 
 export interface LinkType {
-  name: string;
+  linkName: string;
   path: string;
 }
 
@@ -22,10 +22,10 @@ export default function LinksWidget({ title, links, theme }: LinksWidgetType) {
     >
       <h2 className={`${styles.title} cute-font`}>{title}</h2>
       <ul className={styles.list}>
-        {links.map(({ name, path }) => (
-          <li key={name} className={styles["list-item"]}>
+        {links.map(({ linkName, path }) => (
+          <li key={linkName} className={styles["list-item"]}>
             <Link href={path}>
-              <a>{name}</a>
+              <a>{linkName}</a>
             </Link>
           </li>
         ))}

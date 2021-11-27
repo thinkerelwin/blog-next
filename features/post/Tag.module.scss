@@ -1,4 +1,4 @@
-@use '@/styles/mixins';
+@use "@/styles/mixins";
 
 @mixin decoration-line() {
   border-top: 1px solid #537375;
@@ -35,11 +35,13 @@
   @include mixins.rwd(md) {
     font-size: 1.5rem;
   }
+
   &::before {
     @include decoration-line();
 
     left: 2px;
   }
+
   &::after {
     @include decoration-line();
 

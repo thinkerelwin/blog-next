@@ -1,4 +1,4 @@
-@use '@/styles/mixins';
+@use "@/styles/mixins";
 
 .container {
   height: 100vh;
@@ -12,8 +12,9 @@
   @include mixins.rwd(md) {
     display: none;
   }
+
   &.active {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(0 0 0 / 50%);
     opacity: 1;
     visibility: visible;
   }

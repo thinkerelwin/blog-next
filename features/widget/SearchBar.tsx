@@ -6,7 +6,7 @@ import IconMoon from "@/components/svg/IcoMoon";
 import styles from "./SearchBar.module.scss";
 
 export interface allPostTitlesType {
-  name: string;
+  postName: string;
   path: string;
 }
 
@@ -21,7 +21,9 @@ const SearchBar = ({ allPosts }: { allPosts: allPostTitlesType[] }) => {
     if (inputValue?.trim()) {
       const LowerCasedInputValue = inputValue.toLocaleLowerCase();
       setResults(
-        allPostTitles.filter((post) => post.name.includes(LowerCasedInputValue))
+        allPostTitles.filter((post) =>
+          post.postName.includes(LowerCasedInputValue)
+        )
       );
     }
   }
@@ -46,7 +48,7 @@ const SearchBar = ({ allPosts }: { allPosts: allPostTitlesType[] }) => {
         <ul className={styles.results}>
           {results.map((result) => (
             <Link key={result.path} href={result.path}>
-              <a className={styles.result}>{result.name}</a>
+              <a className={styles.result}>{result.postName}</a>
             </Link>
           ))}
         </ul>

@@ -1,4 +1,4 @@
-@use '@/styles/mixins';
+@use "@/styles/mixins";
 
 $result-padding-top: 3px;
 
@@ -6,10 +6,7 @@ $result-padding-top: 3px;
   @include mixins.fade-in;
 
   background-color: #f9f6e7;
-  background-image: linear-gradient(
-    rgba(54, 133, 221, 0.3) 1px,
-    transparent 1px
-  );
+  background-image: linear-gradient(rgb(54 133 221 / 30%) 1px, transparent 1px);
   background-position: 100px 100px;
   background-size: 30px 30px;
   margin: 1.25rem;
@@ -29,6 +26,7 @@ $result-padding-top: 3px;
   @include mixins.rwd(l) {
     font-size: 1.3rem;
   }
+
   &:focus-within {
     border-color: #2c48b3;
   }
@@ -65,6 +63,7 @@ $result-padding-top: 3px;
   @include mixins.rwd(l) {
     font-size: 1.3rem;
   }
+
   &::placeholder {
     font-style: italic;
   }

@@ -1,4 +1,4 @@
-@use 'mixins';
+@use "mixins";
 
 *,
 *::before,
@@ -34,18 +34,19 @@ html {
 }
 
 body {
-  background-color: rgb(189, 203, 204);
+  background-color: rgb(189 203 204);
   box-sizing: border-box;
   @include mixins.rwd(sm) {
     padding: 0;
   }
+
   &::before {
     @include mixins.rwd(sm) {
       background: radial-gradient(
         ellipse at center,
-        rgba(255, 255, 255, 0.5) 0%,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(255, 255, 255, 0) 100%
+        rgb(255 255 255 / 50%) 0%,
+        rgb(255 255 255 / 0%) 50%,
+        rgb(255 255 255 / 0%) 100%
       );
       content: "";
       display: block;
@@ -63,6 +64,7 @@ body {
 
 a {
   text-decoration: none;
+
   &:visited {
     color: inherit;
   }

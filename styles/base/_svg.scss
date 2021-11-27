@@ -1,4 +1,4 @@
-@use '@/styles/mixins';
+@use "@/styles/mixins";
 
 .paperclip {
   fill: #aaa;
@@ -12,18 +12,22 @@
 }
 
 .pencil-sharpener {
-  fill: rgba(0, 0, 48, 0.795);
+  fill: rgb(0 0 48 / 79.5%);
   transform: rotate(80deg);
   width: auto;
+
   .sharpener0 {
     fill: #939393;
   }
+
   .sharpener1 {
     fill: #565656;
   }
+
   .sharpener2 {
     fill: #c1c1c1;
   }
+
   .sharpener3 {
     fill: #fff;
   }
@@ -42,23 +46,29 @@
   .pencil-little0 {
     fill: #edcfcf;
   }
+
   .pencil-little1 {
     fill: #eaeaea;
   }
+
   .pencil-little2 {
     fill: #ddb612;
   }
+
   .pencil-little3 {
     fill: #fff;
     opacity: 0.5;
   }
+
   .pencil-little4 {
     fill: #5b5950;
     opacity: 0.2;
   }
+
   .pencil-little5 {
     fill: #f9f6e7;
   }
+
   .pencil-little6 {
     fill: #4f4f4f;
   }
@@ -68,6 +78,7 @@
   display: block;
   margin: 0 auto 20px;
   max-width: 50%;
+
   .footer-line0 {
     fill: #8ba2a3;
     opacity: 0.4;

@@ -34,9 +34,10 @@ export default function MobileWidgets({
 }) {
   const [nameOfActiveWidget, setNameOfActiveWidget] = useState("");
 
-  const hasActiveTab = useMemo(() => nameOfActiveWidget.length > 0, [
-    nameOfActiveWidget
-  ]);
+  const hasActiveTab = useMemo(
+    () => nameOfActiveWidget.length > 0,
+    [nameOfActiveWidget]
+  );
 
   function changeTab(name: string) {
     const isSameTab = nameOfActiveWidget === name;

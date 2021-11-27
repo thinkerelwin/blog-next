@@ -20,14 +20,9 @@
       "@/features/*": ["features/*"],
       "@/components/*": ["components/*"],
       "@/utils/*": ["utils/*"]
-    }
+    },
+    "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "next.config.js",
-    "components/svg/IcoMoon.js"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

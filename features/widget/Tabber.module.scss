@@ -1,4 +1,4 @@
-@use '@/styles/mixins';
+@use "@/styles/mixins";
 
 .container {
   align-items: center;
@@ -14,6 +14,7 @@
   @include mixins.rwd(md) {
     display: none;
   }
+
   &.conceal {
     transform: translateY(100%);
   }
@@ -22,6 +23,7 @@
 .image {
   opacity: 0.53;
   padding: 0.5rem;
+
   &.active {
     opacity: 1;
   }

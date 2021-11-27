@@ -30,7 +30,7 @@ export default function Tabber({
   changeTab
 }: {
   nameOfActiveWidget: string;
-  changeTab: Function;
+  changeTab: (name: string) => void;
 }) {
   const prevOffsetRef = useRef(0);
 

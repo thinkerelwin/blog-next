@@ -1,7 +1,7 @@
 /* lato-regular - latin */
 @font-face {
   font-display: swap;
-  font-family: "Lato";
+  font-family: Lato;
   font-style: normal;
   font-weight: 400;
   src: local(""), url("/fonts/lato-v17-latin-regular.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
@@ -10,7 +10,7 @@
 /* lato-700 - latin */
 @font-face {
   font-display: swap;
-  font-family: "Lato";
+  font-family: Lato;
   font-style: normal;
   font-weight: 700;
   src: local(""), url("/fonts/lato-v17-latin-700.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
@@ -19,7 +19,7 @@
 /* kalam-regular - latin */
 @font-face {
   font-display: swap;
-  font-family: "Kalam";
+  font-family: Kalam;
   font-style: normal;
   font-weight: 400;
   src: local(""), url("/fonts/kalam-v11-latin-regular.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
@@ -28,7 +28,7 @@
 /* kalam-700 - latin */
 @font-face {
   font-display: swap;
-  font-family: "Kalam";
+  font-family: Kalam;
   font-style: normal;
   font-weight: 700;
   src: local(""), url("/fonts/kalam-v11-latin-700.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
@@ -39,9 +39,9 @@ button,
 input,
 select,
 textarea {
-  font-family: "Lato", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-family: Lato, "Helvetica Neue", helvetica, arial, sans-serif;
 }
 
 .cute-font {
-  font-family: "Kalam", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-family: Kalam, "Helvetica Neue", helvetica, arial, sans-serif;
 }

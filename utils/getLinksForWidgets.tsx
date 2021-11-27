@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { PostType } from "@/features/post/Article";
 
 export function getPathsForArchives(dateOfFirstPost: string) {
-  let months = [];
+  const months = [];
   let date;
   const startDate = dayjs(dateOfFirstPost);
 
@@ -35,7 +35,7 @@ export async function getLinksForWidgets() {
   const tags = await (await fetch(`${process.env.BACKEND_URL}/tags`)).json();
 
   const linksForTags = tags.map(({ tag }: { tag: string }) => ({
-    name: tag,
+    linkName: tag,
     path: `/tags/${tag}`
   }));
 
@@ -48,7 +48,7 @@ export async function getLinksForWidgets() {
       .set("month", Number(date.slice(-2)) - 1)
       .format("MMMM");
     return {
-      name: `${month} ${date.slice(0, 4)}`,
+      linkName: `${month} ${date.slice(0, 4)}`,
       path: `/archives/${date}`
     };
   });
@@ -72,7 +72,7 @@ export async function getLinksForWidgets() {
   const linksForRecentPosts = recentPosts.map(
     ({ title, slug }: { title: string; slug: string }) => {
       return {
-        name: title,
+        linkName: title,
         path: `/posts/${slug}`
       };
     }
@@ -91,7 +91,7 @@ export async function getAllPosts() {
 
   const allPosts = posts.map((post: PostType) => {
     return {
-      name: post.title.toLowerCase(),
+      postName: post.title.toLowerCase(),
       path: `/posts/${post.slug}`
     };
   });

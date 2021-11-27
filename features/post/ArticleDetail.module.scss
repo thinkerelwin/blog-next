@@ -1,5 +1,5 @@
-@use '@/styles/mixins';
-@use '@/features/post/Posts.module.scss';
+@use "@/styles/mixins";
+@use "@/features/post/Posts.module.scss";
 
 .outer-container {
   // display: flex;
@@ -22,8 +22,10 @@
   @include mixins.rwd(md) {
     font-size: 1.1rem;
   }
+
   &:not(:last-child) {
     margin-right: 0.5rem;
+
     &::after {
       content: ",";
     }
@@ -38,6 +40,7 @@
     padding-left: 7rem;
     padding-right: 7rem;
   }
+
   .tag {
     color: #a9babc;
   }

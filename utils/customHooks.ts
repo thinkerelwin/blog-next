@@ -22,7 +22,7 @@ export function useMediaQuery(query: string) {
   return doesMatch;
 }
 
-export function usePrevious(value: number, initialValue: number = 0) {
+export function usePrevious(value: number, initialValue = 0) {
   const ref = useRef(initialValue);
 
   useEffect(() => {
