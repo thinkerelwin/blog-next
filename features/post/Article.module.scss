@@ -185,6 +185,10 @@
     padding-left: revert;
   }
 
+  a:visited {
+    color: #007bff;
+  }
+
   &.preview p {
     -webkit-box-orient: vertical;
     display: -webkit-box;

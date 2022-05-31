@@ -2,6 +2,8 @@ import dayjs from "dayjs";
 
 import { PostType } from "@/features/post/Article";
 
+const NUMBER_OF_RECENT_POSTS = 7;
+
 export function getPathsForArchives(dateOfFirstPost: string) {
   const months = [];
   let date;
@@ -43,6 +45,7 @@ export async function getLinksForWidgets() {
     await fetch(`${process.env.BACKEND_URL}/posts?_start=0&_limit=1`)
   ).json();
   const listForArchives = getPathsForArchives(initialPost[0].created_at);
+  // example of date format: 2021-12
   const linksForArchives = listForArchives.map(({ params: { date } }) => {
     const month = dayjs()
       .set("month", Number(date.slice(-2)) - 1)
@@ -69,14 +72,14 @@ export async function getLinksForWidgets() {
     (a, b) => getTimestamp(b.published_at) - getTimestamp(a.published_at)
   );
 
-  const linksForRecentPosts = recentPosts.map(
-    ({ title, slug }: { title: string; slug: string }) => {
+  const linksForRecentPosts = recentPosts
+    .slice(0, NUMBER_OF_RECENT_POSTS)
+    .map(({ title, slug }: { title: string; slug: string }) => {
       return {
         linkName: title,
         path: `/posts/${slug}`
       };
-    }
-  );
+    });
 
   return {
     linksForArchives,
